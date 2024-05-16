@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #FEF4F4;
+  font-family: "Poppins", sans-serif;
+}
+
+.app-bar {
+  background-color: #FEF4F4;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-bar__brand img {
+  height: 50px;
+}
+
+.app-bar__menu {
+  display: block;
+}
+
+.app-bar__navigation {
+  display: none;
+}
+
+.app-bar__navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.app-bar__navigation ul li {
+  padding: 6px;
+}
+
+.app-bar__navigation ul li a {
+  text-decoration: none;
+  color: #2A6478;
+  font-weight: bold;
+}
+
+.app-bar__navigation ul li a.login {
+  background-color: #2A6478;
+  color: #FFFFFF;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.hero {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.hero img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.moto {
+  text-align: center;
+  padding: 20px;
+}
+
+.moto h2 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.moto-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.moto-item {
+  background-color: #1A4756;
+  height: 100px;
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 650px) {
+  .app-bar__menu {
+      display: none;
+  }
+
+  .app-bar__navigation {
+      display: block;
+  }
+
+  .app-bar__navigation ul {
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 20px;
+  }
+
+  .app-bar__navigation ul li {
+      padding: 0;
+  }
+
+  .app-bar__navigation ul li a {
+      background-color: transparent;
+      color: #2A6478;
+  }
+
+  .app-bar__navigation ul li a.login {
+      background-color: #2A6478;
+      color: #FFFFFF;
+      padding: 8px 16px;
+      border-radius: 4px;
+  }
+}
