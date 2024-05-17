@@ -1,35 +1,31 @@
-@media screen and (min-width: 810px) {
-      .app-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-    
-      .app-bar .app-bar__menu {
+@media screen and (min-width: 650px) {
+    .app-bar__menu {
         display: none;
-      }
-    
-      .app-bar .app-bar__navigation {
-        position: static;
-        width: auto;
-      }
-    
-      .app-bar .app-bar__navigation ul {
-        display: flex;
-        justify-content: flex-end;
-        gap: 20px;
-      }
-    
-      .app-bar .app-bar__navigation ul li {
-        list-style: none;
-        padding: 6px;
-      }
-    
-      .app-bar .app-bar__navigation ul li a {
-        text-decoration: none;
-        color: black;
-        padding: 8px 12px;
-        border-radius: 5px;
-      }
+    }
   
+    .app-bar__navigation {
+        display: block;
+    }
+  
+    .app-bar__navigation ul {
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 2rem;
+    }
+  
+    .app-bar__navigation ul li {
+        padding: 0;
+    }
+  
+    .app-bar__navigation ul li a {
+        background-color: transparent;
+        color: #2A6478;
+    }
+  
+    .app-bar__navigation ul li a.login {
+        background-color: #2A6478;
+        color: #FFFFFF;
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
   }
