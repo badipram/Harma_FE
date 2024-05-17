@@ -1,31 +1,103 @@
-@media screen and (min-width: 650px) {
-    .app-bar__menu {
-        display: none;
+@media screen and (min-width: 544px) {
+    .app-bar__brand img {
+        height: 70px;
+    }
+
+    .moto-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .fasilitas .list-fasilitas, .galeri .list-galeri {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .penduduk .content-penduduk {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+
+  }
+
+@media screen and (min-width: 850px) {
+    .app-bar__brand img {
+        height: 100px;
+    }
+
+    .app-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   
-    .app-bar__navigation {
-        display: block;
+    .app-bar .app-bar__menu {
+      display: none;
     }
   
-    .app-bar__navigation ul {
-        flex-direction: row;
-        justify-content: flex-end;
-        gap: 2rem;
+    .app-bar .app-bar__navigation {
+      position: static;
+      width: auto;
     }
   
-    .app-bar__navigation ul li {
-        padding: 0;
+    .app-bar .app-bar__navigation ul {
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
     }
   
-    .app-bar__navigation ul li a {
-        background-color: transparent;
-        color: #2A6478;
+    .app-bar .app-bar__navigation ul li {
+      list-style: none;
+      padding: 6px;
     }
   
-    .app-bar__navigation ul li a.login {
-        background-color: #2A6478;
-        color: #FFFFFF;
-        padding: 8px 16px;
-        border-radius: 4px;
+    .app-bar .app-bar__navigation ul li a {
+      text-decoration: none;
+      color: black;
+      padding: 8px 12px;
+      border-radius: 5px;
     }
+}
+
+@media (min-width: 1024px) {
+    .fasilitas .list-fasilitas, .galeri .list-galeri {
+      grid-template-columns: repeat(3, 1fr); /* Untuk desktop: tiga kolom */
+    }
+    footer .wrapper-footer {
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+      }
+    
+      footer .wrapper-footer .logo-footer {
+       width: auto;
+       background-color: ffff;
+      }
+
+      footer .wrapper-footer .logo-footer img {
+        width: 100%;
+      }
+    
+      footer .wrapper-footer .content-footer {
+        padding: 20px 40px;
+      }
+    
+      footer .wrapper-footer .content-footer .info-footer {
+        flex-flow: row nowrap;
+      }
+    
+      footer .wrapper-footer .content-footer .info-footer .link-cepat {
+      margin-right: 40px;
+      }
+
+      footer .wrapper-footer .content-footer .info-footer .tentang-kami {
+        margin-right: 40px;
+      }
+    
+      footer .wrapper-footer .content-footer .info-footer .tentang-kami .sosial-media ul {
+        gap: 20px;
+      }
+    
+      footer .copyright-footer p {
+        font-size: 16px;
+      }
   }

@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -15,50 +21,103 @@ body {
 }
 
 .app-bar__brand img {
-  width: 100%;
-  height: 80px;
+  height: 60px;
 }
 
 .app-bar__menu {
   display: block;
 }
 
-.app-bar__navigation {
-  display: none;
+.app-bar {
+  padding: 8px 16px;
+  background-color: #FEF4F4;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
-
-.app-bar__navigation ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+ 
+.app-bar .app-bar__menu {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  align-items: center;
+}
+ 
+.app-bar .app-bar__menu button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 25px;
+  padding: 12px;
+  cursor: pointer;
+}
+ 
+.app-bar .app-bar__brand {
+  display: flex;
+  align-items: center;
+}
+  
+.app-bar .app-bar__navigation {
+  position: absolute;
+  top: 50px;
+  left: -180px;
+  width: 150px;
+  transition: all 0.3s;
+  padding: 8px;
+}
+ 
+.app-bar .app-bar__navigation.open {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  transition: all 0.3s;
+  padding: 8px;
+  overflow: hidden;
 }
 
-.app-bar__navigation ul li {
+.app-bar .app-bar__navigation ul {
+  background-color: #FEF4F4;
+  border-radius: 10px;
+  list-style: none;
+  text-align: center;
+}
+
+.app-bar .app-bar__navigation ul li {
   padding: 6px;
-  min-width: 44px;
-  min-height: 44px;
-  align-content: center;
-}
-
-.app-bar__navigation ul li a {
   text-decoration: none;
-  color: #2A6478;
-  font-weight: bold;
 }
 
-.app-bar__navigation ul li a.login {
+.app-bar .app-bar__navigation ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  padding: 8px;
+  margin-bottom: 5px;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+/* .app-bar__navigation ul li a.login {
   background-color: #2A6478;
   color: #FFFFFF;
   padding: 8px 16px;
   border-radius: 4px;
+} */
+
+.app-bar .app-bar__navigation ul li a:hover {
+  background-color: #2A6478;
+  color: #FEF4F4;
+  border-radius: 8px;
 }
 
 .hero {
   text-align: center;
-  width: 100%;
+  margin: 20px 0;
 }
 
 .hero img {
@@ -70,7 +129,6 @@ body {
 .moto {
   text-align: center;
   padding: 20px;
-  margin: 50px;
 }
 
 .moto h2 {
@@ -81,7 +139,7 @@ body {
 
 .moto-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 2fr);
   gap: 20px;
   max-width: 600px;
   margin: 0 auto;
@@ -94,13 +152,21 @@ body {
 }
 
 /* Fasilitas */
-.fasilitas, .galeri, .kegiatan, .penduduk {
+.title {
+  margin-left: 10px;
+}
+
+.fasilitas,
+.galeri,
+.kegiatan,
+.penduduk {
   width: 100%;
   max-width: 900px;
   margin: 80px auto;
 }
 
-.fasilitas .title, .galeri .title {
+.fasilitas .title, 
+.galeri .title {
   text-align: center;
   display: flex;
   flex-flow: row nowrap;
@@ -108,7 +174,10 @@ body {
   align-items: center;
 }
 
-.fasilitas .title h2, .galeri .title h2, .kegiatan .title h2, .penduduk .title h2{
+.fasilitas .title h2, 
+.galeri .title h2, 
+.kegiatan .title h2, 
+.penduduk .title h2 {
   font-size: 30px;
 }
 
@@ -119,59 +188,67 @@ body {
   padding-inline: 15px;
   min-width: 44px;
   min-height: 44px;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 10px;
   background-color: #1A4756;
+  margin-right: 10px;
 }
 
-.fasilitas .btn-fasilitas a{
+.fasilitas .btn-fasilitas a {
   color: #FFFFFF;
   text-decoration: none;
+  font-size: 15px;
 }
 
-.wrapper-fasilitas, .wrapper-galeri, .wrapper-kegiatan, .wrapper-penduduk {
+.wrapper-fasilitas, 
+.wrapper-galeri,
+.wrapper-kegiatan,
+.wrapper-penduduk {
   background-color: #1A4756;
+  margin: 0 10px 0 10px;
+  border-radius: 5px;
 }
 
-.fasilitas .list-fasilitas, .galeri .list-galeri {
+.fasilitas .list-fasilitas,
+.galeri .list-galeri {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   background-color: #1A4756;
-  column-gap: 1.5rem;
-  row-gap: 1.5rem;
+  gap: 1.5rem;
   padding: 1.5rem;
 }
 
-.fasilitas .list-fasilitas .content-fasilitas, .galeri .list-galeri .content-galeri {
+.fasilitas .list-fasilitas .content-fasilitas,
+.galeri .list-galeri .content-galeri {
   padding: 10px;
   background-color: #FFFFFF;
+  border-radius: 5px;
 }
 
-.fasilitas .list-fasilitas .content-fasilitas, .galeri .list-galeri .content-galeri h2{
+.fasilitas .list-fasilitas .content-fasilitas h2,
+.galeri .list-galeri .content-galeri h2 {
   margin-block: 0.5rem;
 }
 
-.fasilitas .list-fasilitas .content-fasilitas img, .galeri .list-galeri .content-galeri img {
+.fasilitas .list-fasilitas .content-fasilitas img,
+.galeri .list-galeri .content-galeri img {
   width: 100%;
   height: 200px;
   background-color: grey;
+  border-radius: 5px;
 }
 
 /* kegiatan */
 .kegiatan .wrapper-kegiatan .content-kegiatan {
-  padding: 30px;
-  display: flex;
-  flex-flow: column nowrap;
-  gap: 1rem;
+  padding: 15px;
 }
 
 .kegiatan .wrapper-kegiatan .content-kegiatan .title-kegiatan {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   background-color: #FFFFFF;
-  align-items: center;
+  border-radius: 5px;
   padding: 10px;
-  gap: 3rem;
-  justify-content: space-between;
+  gap: 10px;
 }
 
 .kegiatan .wrapper-kegiatan .content-kegiatan .title-kegiatan .waktu {
@@ -182,26 +259,32 @@ body {
   max-width: 150px;
 }
 
-.kegiatan .wrapper-kegiatan .content-kegiatan .title-kegiatan .waktu .tanggal{
-  font-size: 30px;
+.kegiatan .wrapper-kegiatan .content-kegiatan .title-kegiatan .waktu .tanggal {
+  font-size: 24px;
 }
 
-.kegiatan .wrapper-kegiatan .content-kegiatan .title-kegiatan .title h2{
-  font-size: 25px;
+.kegiatan .wrapper-kegiatan .content-kegiatan .title-kegiatan .title h2 {
+  font-size: 20px;
 }
 
-.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan{
+.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan {
   background-color: #FFFFFF;
-  padding: 15px 20px;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
 }
 
-.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan .detail h2, .waktu h2, .tempat h2{
-  font-size: 25px;
+.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan .detail h2,
+.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan .waktu h2,
+.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan .tempat h2 {
+  font-size: 20px;
   margin: 0;
 }
 
-.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan .detail, .detail-kegiatan .waktu, .detail-kegiatan .tempat {
-  margin-block: 20px;
+.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan .detail,
+.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan .waktu,
+.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan .tempat {
+  margin-block: 15px;
 }
 
 .kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan .body {
@@ -209,14 +292,19 @@ body {
   margin-block: 10px;
 }
 
-.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan .detail .body h2{
-  font-size: 20px;
+.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan .body ul {
+  margin-left: 20px;
 }
+
+.kegiatan .wrapper-kegiatan .content-kegiatan .detail-kegiatan .detail .body h2 {
+  font-size: 18px;
+}
+
 
 /* penduduk */
 .penduduk .content-penduduk {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 1rem;
   padding: 1rem;
 }
@@ -225,8 +313,8 @@ body {
   background-color: #FFFFFF;
   padding: 10px;
   display: flex;
-  flex-flow: row nowrap;
-  gap: 1rem;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
   align-items: center;
 }
 
@@ -238,8 +326,8 @@ body {
 }
 
 .penduduk .content-penduduk .item-penduduk h2 {
-  max-width: 50%;
-  width: 100%;
+  text-align: center;
+  font-size: 18px;
 }
 
 /* footer */
@@ -249,71 +337,76 @@ footer {
 
 footer .wrapper-footer {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
 }
 
-footer .wrapper-footer .logo-footer{
-  align-content: center;
-  width: 600px;
+footer .wrapper-footer .logo-footer {
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #E9DDDD;
 }
 
-footer .wrapper-footer .logo-footer img{
-  width: 100%;
+footer .wrapper-footer .logo-footer img {
+  /* width: 100%; */
+  width: 200px;
+  height: auto;
 }
 
 footer .wrapper-footer .content-footer {
   background-color: #1A4756;
   padding: 20px;
-  display: flex;
-  flex-flow: column nowrap;
   color: white;
 }
 
-footer .wrapper-footer .content-footer .description-footer p{
+footer .wrapper-footer .content-footer .description-footer {
+  margin-bottom: 20px;
+}
+
+footer .wrapper-footer .content-footer .description-footer p {
   color: #E9DDDD;
 }
 
-footer .wrapper-footer .content-footer .info-footer{
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-}
-
-footer .wrapper-footer .content-footer .info-footer .link-cepat{
+footer .wrapper-footer .content-footer .info-footer {
   display: flex;
   flex-flow: column nowrap;
-  gap: 5px;
 }
 
-footer .wrapper-footer .content-footer .info-footer .link-cepat a{
+footer .wrapper-footer .content-footer .info-footer .link-cepat {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+footer .wrapper-footer .content-footer .info-footer .link-cepat a {
   text-decoration: none;
   color: white;
 }
 
-footer .wrapper-footer .content-footer .info-footer .tentang-kami .detail-tentang-kami p{
+footer .wrapper-footer .content-footer .info-footer .tentang-kami .detail-tentang-kami p {
   font-weight: bold;
 }
 
-footer .wrapper-footer .content-footer .info-footer .tentang-kami .sosial-media ul{
+footer .wrapper-footer .content-footer .info-footer .tentang-kami .sosial-media ul {
   display: flex;
   flex-flow: row nowrap;
   gap: 1rem;
   list-style: none;
   padding: 0;
+  margin: 10px 0 20px 0;
 }
 
-footer .wrapper-footer .content-footer .info-footer .tentang-kami .sosial-media li{
+footer .wrapper-footer .content-footer .info-footer .tentang-kami .sosial-media li {
   background-color: #FFFFFF;
   padding: 5px;
   min-width: 44px;
   min-height: 44px;
   border-radius: 50px;
-  align-content: center;
   text-align: center;
 }
 
-footer .wrapper-footer .content-footer .info-footer .tentang-kami .sosial-media li a{
+footer .wrapper-footer .content-footer .info-footer .tentang-kami .sosial-media li a {
   text-decoration: none;
   color: black;
   font-size: 25px;
@@ -322,24 +415,11 @@ footer .wrapper-footer .content-footer .info-footer .tentang-kami .sosial-media 
 footer .copyright-footer {
   text-align: center;
   background-color: #1391A5;
-  padding: 25px;
+  padding: 15px;
 }
 
-footer .copyright-footer p{
+footer .copyright-footer p {
   margin: 0;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
