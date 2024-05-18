@@ -1,9 +1,9 @@
-const createFasilitasTemplate = (fasilitas) => `
+const createFasilitasTemplate = () => `
     <div class="title">
-    <h2>FASILITAS</h2>
-    <div class="btn-fasilitas">
-        <a href="#">Lihat Semua Fasilitas</a>
-    </div>
+        <h2>FASILITAS</h2>
+        <div class="btn-fasilitas">
+            <a href="#/fasilitas">Lihat Semua Fasilitas</a>
+        </div>
     </div>
     <div class="wrapper-fasilitas">
     <div class="list-fasilitas">
