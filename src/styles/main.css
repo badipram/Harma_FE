@@ -612,7 +612,7 @@ footer .copyright-footer p {
   padding: 10px;
 }
 
-.form form .form-input input[type="text"]:focus, .form-input textarea:focus{
+.form form .form-input input[type="text"]:focus, .form-input textarea:focus, .form-input input[type="date"]:focus, .form-input input[type="time"]:focus{
   border-color: black;
   outline: none;
 }
