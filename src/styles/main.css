@@ -165,7 +165,7 @@ body {
 }
 
 .fasilitas .title, 
-.galeri .title {
+.galeri .title, .kegiatan .title {
   text-align: center;
   display: flex;
   flex-flow: row nowrap;
@@ -180,7 +180,7 @@ body {
   font-size: 30px;
 }
 
-.fasilitas .btn-fasilitas {
+.fasilitas .btn-fasilitas, .kegiatan .btn-kegiatan {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -192,7 +192,7 @@ body {
   margin-right: 10px;
 }
 
-.fasilitas .btn-fasilitas a {
+.fasilitas .btn-fasilitas a, .kegiatan .btn-kegiatan a {
   color: #FFFFFF;
   text-decoration: none;
   font-size: 15px;
@@ -421,3 +421,82 @@ footer .copyright-footer p {
   color: white;
   font-size: 16px;
 }
+
+/* tambah fasilitas */
+.form {
+  width: 100%;
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.form .wrapper-form {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 30px;
+  margin: 30px;
+  background-color: #FFFFFF;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form .wrapper-form .title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.form form .form-input {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 5px;
+}
+
+.form form .form-input input[type="text"], .form-input input[type="date"], .form-input input[type="time"]{
+  height: 35px; 
+  border-radius: 10px;
+  border: 1px solid grey;
+  padding: 10px;
+}
+
+.form form .form-input input[type="text"]:focus, .form-input textarea:focus{
+  border-color: black;
+  outline: none;
+}
+
+.form form .form-input textarea {
+  height: 100px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  resize: none;
+}
+
+.form-input input[type="file"] {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer; /* Mengubah kursor saat di hover */
+}
+
+.form form .form-button button{
+  width: 100%;
+  min-height: 44px;
+  min-width: 44px;
+  border: none;
+  border-radius: 10px;
+  background-color: #1391A5;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
