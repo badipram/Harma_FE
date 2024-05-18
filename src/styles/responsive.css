@@ -12,10 +12,18 @@
     .fasilitas .list-fasilitas, .galeri .list-galeri {
       grid-template-columns: repeat(3, 1fr);
     }
+
     .penduduk .content-penduduk {
         grid-template-columns: repeat(2, 1fr);
-      }
+    }
     
+    .about-header {
+        flex-direction: row;
+    }
+
+    .about-logo {
+      margin-bottom: 0;
+    }
   }
 
 @media screen and (min-width: 950px) {
