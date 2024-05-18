@@ -61,27 +61,24 @@ body {
   
 .app-bar .app-bar__navigation {
   position: absolute;
-  top: 50px;
+  top: 75px;
   left: -180px;
   width: 150px;
   transition: all 0.3s;
-  padding: 8px;
 }
  
 .app-bar .app-bar__navigation.open {
   position: absolute;
-  top: 50px;
+  top: 75px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   transition: all 0.3s;
-  padding: 8px;
   overflow: hidden;
 }
 
 .app-bar .app-bar__navigation ul {
   background-color: #FEF4F4;
-  border-radius: 10px;
   list-style: none;
   text-align: center;
 }
@@ -118,6 +115,7 @@ body {
 .hero {
   text-align: center;
   margin: 20px 0;
+  margin: 0;
 }
 
 .hero img {
@@ -154,6 +152,7 @@ body {
 /* Fasilitas */
 .title {
   margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .fasilitas,
@@ -337,21 +336,17 @@ footer {
 
 footer .wrapper-footer {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
 }
 
-footer .wrapper-footer .logo-footer {
-  /* width: 100%; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+footer .wrapper-footer .logo-footer{
+  align-content: center;
+  width: 600px;
   background-color: #E9DDDD;
 }
 
-footer .wrapper-footer .logo-footer img {
-  /* width: 100%; */
-  width: 200px;
-  height: auto;
+footer .wrapper-footer .logo-footer img{
+  width: 100%;
 }
 
 footer .wrapper-footer .content-footer {
@@ -366,11 +361,14 @@ footer .wrapper-footer .content-footer .description-footer {
 
 footer .wrapper-footer .content-footer .description-footer p {
   color: #E9DDDD;
+  text-align: justify;
 }
 
 footer .wrapper-footer .content-footer .info-footer {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 footer .wrapper-footer .content-footer .info-footer .link-cepat {

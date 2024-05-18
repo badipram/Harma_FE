@@ -10,16 +10,15 @@
 
 @media (min-width: 768px) {
     .fasilitas .list-fasilitas, .galeri .list-galeri {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
     .penduduk .content-penduduk {
         grid-template-columns: repeat(2, 1fr);
       }
-      
-
+    
   }
 
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 950px) {
     .app-bar__brand img {
         height: 100px;
     }
@@ -58,46 +57,33 @@
     }
 }
 
-@media (min-width: 1024px) {
-    .fasilitas .list-fasilitas, .galeri .list-galeri {
-      grid-template-columns: repeat(3, 1fr); /* Untuk desktop: tiga kolom */
-    }
-    footer .wrapper-footer {
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-items: center;
-      }
-    
-      footer .wrapper-footer .logo-footer {
-       width: auto;
-       background-color: ffff;
-      }
-
-      footer .wrapper-footer .logo-footer img {
-        width: 100%;
-      }
-    
-      footer .wrapper-footer .content-footer {
-        padding: 20px 40px;
-      }
-    
-      footer .wrapper-footer .content-footer .info-footer {
-        flex-flow: row nowrap;
-      }
-    
-      footer .wrapper-footer .content-footer .info-footer .link-cepat {
-      margin-right: 40px;
-      }
-
-      footer .wrapper-footer .content-footer .info-footer .tentang-kami {
-        margin-right: 40px;
-      }
-    
-      footer .wrapper-footer .content-footer .info-footer .tentang-kami .sosial-media ul {
-        gap: 20px;
-      }
-    
-      footer .copyright-footer p {
-        font-size: 16px;
-      }
+@media screen and (max-width: 1024px) {
+  footer .wrapper-footer {
+    flex-flow: column nowrap;
   }
+
+  footer .wrapper-footer .logo-footer{
+    height: 100px;
+    width: 100%;
+    text-align: center;
+  }
+
+  footer .wrapper-footer .logo-footer img{
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  footer .wrapper-footer .content-footer .info-footer {
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  footer .wrapper-footer .content-footer .info-footer, .link-cepat, footer .tentang-kami, footer .kontak-footer, footer .description-footer {
+    text-align: center;
+  }
+
+  footer .tentang-kami .sosial-media ul{
+    justify-content: center;
+  }
+}
