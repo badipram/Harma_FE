@@ -1,5 +1,5 @@
 const createFormFasilitas = () => `
-    <section class="form">
+    <section class="form animate__animated animate__fadeInDown">
         <div class="wrapper-form">
             <div class="title">
                 <h2>Tambah Fasilitas</h2>
