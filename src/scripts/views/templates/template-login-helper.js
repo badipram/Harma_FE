@@ -10,7 +10,6 @@ const createLoginTemplate = (login) =>`
                         <label for="password">Password</label>
                         <input type="password" id="password" name="password" placeholder="Password" required>
                     </div>
-                        
                     <div class="remember-me-container">
                         <input type="checkbox" id="remember-me" name="remember-me">
                         <label for="remember-me">Ingat Saya</label>
@@ -19,6 +18,8 @@ const createLoginTemplate = (login) =>`
                     <div class="form-button">
                         <button type="submit">Login</button>
                     </div>
+
+                    </div> 
                 </form>
             </div>
 `;
