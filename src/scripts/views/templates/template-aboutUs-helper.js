@@ -1,5 +1,5 @@
 const createAboutUsTemplate = (member) => `
-    <div class="about-header">
+    <div class="about-header" data-aos="fade-down" data-aos-duration="1200">
             <img src="./images/brand-logo.png" alt="HARMA Logo" class="about-logo">
             <div class="about-description">
             <h3>Apakah itu HARMA?</h3>
@@ -7,7 +7,7 @@ const createAboutUsTemplate = (member) => `
         </div>
     </div>
 
-    <div class="team-section">
+    <div class="team-section" data-aos="fade-up" data-aos-duration="1200">
         <div class="team-member">
             <img src="path/to/photo1.jpg" alt="TB Muhammad Iqbal Zikri" class="team-photo">
         <div class="team-info">
@@ -17,7 +17,7 @@ const createAboutUsTemplate = (member) => `
         </div>
     </div>
 
-        <div class="team-member">
+        <div class="team-member" data-aos="fade-up" data-aos-duration="1200">
             <img src="path/to/photo2.jpg" alt="Reza Pradana" class="team-photo">
         <div class="team-info">
             <h3>Reza Pradana</h3>
@@ -26,7 +26,7 @@ const createAboutUsTemplate = (member) => `
         </div>
     </div>
 
-        <div class="team-member">
+        <div class="team-member" data-aos="fade-up" data-aos-duration="1200">
             <img src="path/to/photo3.jpg" alt="Badi Amnu Pramuditnya" class="team-photo">
         <div class="team-info">
             <h3>Badi Amnu Pramuditnya</h3>

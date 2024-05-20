@@ -2,6 +2,9 @@ import 'regenerator-runtime';
 import '../styles/main.css';
 import '../styles/responsive.css';
 import App from './views/app';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import 'animate.css';
 
 const app = new App({
   button: document.querySelector('#hamburgerButton'),
@@ -15,4 +18,8 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  AOS.init();
 });

@@ -1,10 +1,10 @@
 const createKegiatanTemplate = (kegiatan) => `
-<div class="title">
+<div class="title" data-aos="fade-down">
     <h2>JADWAL KEGIATAN RT/RW 003/005</h2>
 </div>
-<div class="wrapper-kegiatan">
+<div class="wrapper-kegiatan" data-aos="fade-up" data-aos-duration="1200">
     <div class="content-kegiatan">
-        <div class="title-kegiatan">
+        <div class="title-kegiatan" data-aos="fade-up" data-aos-duration="1200">
             <div class="waktu">
                 <span class="tanggal">02 Juni</span>
                 <span class="jam">08:00 s/d 09:00</span>
@@ -13,7 +13,7 @@ const createKegiatanTemplate = (kegiatan) => `
                 <h2>Kegiatan Kerja Bakti Bulanan, Membersihkan Saluran Air</h2>
             </div>
         </div>
-        <div class="detail-kegiatan">
+        <div class="detail-kegiatan" data-aos="fade-up" data-aos-duration="1200">
             <div class="detail">
                 <h2>Detail</h2>
                 <div class="body">
