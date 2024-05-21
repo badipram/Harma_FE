@@ -46,7 +46,7 @@
       width: auto;
     }
   
-    .app-bar .app-bar__navigation ul {
+    .app-bar .app-bar__navigation > ul {
       display: flex;
       justify-content: flex-end;
       gap: 20px;

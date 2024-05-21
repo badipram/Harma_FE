@@ -6,7 +6,7 @@ const FormKegiatan = {
   },
 
   async afterRender() {
-
+    return '';
   },
 };
 

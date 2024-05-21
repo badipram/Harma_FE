@@ -1,8 +1,8 @@
 import 'regenerator-runtime';
 import '../styles/main.css';
 import '../styles/responsive.css';
-import App from './views/app';
 import AOS from 'aos';
+import App from './views/app';
 import 'aos/dist/aos.css';
 import 'animate.css';
 
