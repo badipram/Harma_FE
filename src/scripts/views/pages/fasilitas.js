@@ -9,9 +9,9 @@ const Fasilitas = {
   },
 
   async afterRender() {
-    const btnFasilitas = document.querySelector('.btn-fasilitas a');
-    btnFasilitas.innerText = 'Tambah Fasilitas';
-    btnFasilitas.href = '#/fasilitas/tambah';
+    // const btnFasilitas = document.querySelector('.btn-fasilitas a');
+    // btnFasilitas.innerText = 'Tambah Fasilitas';
+    // btnFasilitas.href = '#/fasilitas/tambah';
   },
 };
 

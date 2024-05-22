@@ -1,4 +1,4 @@
-import { createAboutUsTemplate } from '../templates/template-aboutUs-helper';
+import { createAboutUsTemplate } from '../templates/template-about-us-helper';
 
 const AboutUs = {
     async render() {
