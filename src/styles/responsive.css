@@ -1,3 +1,27 @@
+@media screen and (min-width: 375px) {
+  .list-penduduk .content-penduduk  {
+    max-width: 330px;
+  }
+
+  .list-penduduk .content-penduduk .description-penduduk {
+    font-size: 15px;
+  }
+
+  .penduduk .content-penduduk .item-penduduk {
+    flex-flow: row nowrap;
+  }
+
+  .penduduk .content-penduduk .item-penduduk h2 {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .list-penduduk .content-penduduk {
+    max-width: 370px;
+  }
+}
+
 @media screen and (min-width: 544px) {
     .app-bar__brand img {
         height: 70px;
@@ -6,6 +30,35 @@
     .moto-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .list-penduduk .content-penduduk .wrapper-img {
+      padding: 10px;
+      width: 80px;
+      height: 80px;
+    }
+
+    .list-penduduk .content-penduduk .wrapper-img i {
+      font-size: 40px;
+    }
+
+    .list-penduduk .content-penduduk .description-penduduk {
+      font-size: 16px;
+      max-width: 400px;
+    }
+
+    .list-penduduk .content-penduduk {
+      max-width: 700px;
+    }
+
+    .list-penduduk .content-penduduk .action {
+      flex-flow: row nowrap;
+    }
+
+    .list-penduduk .content-penduduk .action a {
+      font-size: 30px;
+      margin-right: 25px;
+    }
+    
 }
 
 @media (min-width: 768px) {
@@ -63,6 +116,20 @@
       padding: 8px 12px;
       border-radius: 5px;
     }
+
+    .dropdown-content {
+      position: absolute;
+      max-width: 150px;
+      top: 80%;
+      height: 200px;
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+
 }
 
 @media screen and (max-width: 1024px) {

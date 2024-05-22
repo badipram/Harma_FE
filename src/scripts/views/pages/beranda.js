@@ -3,7 +3,7 @@ import { createGaleriTemplate } from '../templates/template-galeri-helper';
 import { createHeroTemplate } from '../templates/template-hero-helper';
 import createKegiatanTemplate from '../templates/template-kegiatan-helper';
 import { createMotoTemplate } from '../templates/template-moto-helper';
-import { createPendudukTemplate } from '../templates/template-penduduk-helper';
+import { createPendudukTemplate } from '../templates/template-populasi-penduduk-helper';
 
 const Beranda = {
   async render() {

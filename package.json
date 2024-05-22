@@ -42,6 +42,7 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "aos": "^3.0.0-beta.6",
+    "countup.js": "^2.8.0",
     "regenerator-runtime": "^0.14.0"
   }
 }
