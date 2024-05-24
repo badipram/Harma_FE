@@ -7,6 +7,34 @@ import App from './views/app';
 import 'aos/dist/aos.css';
 import 'animate.css';
 
+function initCountUpObserver() {
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5,
+  };
+
+  const observerCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const countUpOptions = { duration: 2 };
+        const countUp = new CountUp(entry.target.id, parseInt(entry.target.dataset.count, 10), countUpOptions);
+        if (!countUp.error) {
+          countUp.start();
+          observer.unobserve(entry.target);
+        } else {
+          console.error(countUp.error);
+        }
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  const elementsToObserve = document.querySelectorAll('.countup');
+  elementsToObserve.forEach((element) => observer.observe(element));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   AOS.init();
 
@@ -20,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     await app.renderPage();
     initCountUpObserver();
   });
-  
+
   window.addEventListener('load', async () => {
     await app.renderPage();
     initCountUpObserver();
@@ -40,32 +68,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-function initCountUpObserver() {
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.5
-  };
-
-  const observerCallback = (entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const countUpOptions = { duration: 2 };
-        const countUp = new CountUp(entry.target.id, parseInt(entry.target.dataset.count, 10), countUpOptions);
-        
-        if (!countUp.error) {
-          countUp.start();
-          observer.unobserve(entry.target);
-        } else {
-          console.error(countUp.error);
-        }
-      }
-    });
-  };
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  const elementsToObserve = document.querySelectorAll('.countup');
-  elementsToObserve.forEach(element => observer.observe(element));
-}
