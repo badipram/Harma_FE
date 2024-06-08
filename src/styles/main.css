@@ -158,6 +158,51 @@ body {
   object-fit: cover;
 }
 
+.swiper-container {
+  position: relative;
+}
+
+.swiper-container .swiper-button-next,
+.swiper-container .swiper-button-prev {
+  color: #E9DDDD;
+  background-color: #1A4756;
+  border-radius: 5px;
+  opacity: 0.5;
+}
+
+.swiper-container .swiper-button-next::after,
+.swiper-container .swiper-button-prev::after {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #E9DDDD;
+  color: #1A4756;
+  transition: background-color 0.3s;
+}
+
+/* .swiper-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.swiper-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  z-index: 1;
+} */
+
 .moto {
   text-align: center;
   padding: 20px;
@@ -173,7 +218,7 @@ body {
   display: grid;
   grid-template-columns: repeat(1, 2fr);
   gap: 20px;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -181,6 +226,26 @@ body {
   background-color: #1A4756;
   height: 100px;
   border-radius: 8px;
+  padding: 10px
+}
+
+.moto-grid .moto-item .logo img {
+  height: 100px;
+  margin-right: 15px;
+}
+
+.moto-grid .moto-item .description p {
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: left;
+}
+
+.moto-item {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
 }
 
 /* Fasilitas */

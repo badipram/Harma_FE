@@ -1,4 +1,4 @@
-const createLoginTemplate = (login) =>`
+const createLoginTemplate = () => `
         <div class="login-box animate__animated animate__fadeInDown">
                 <h2>Login</h2>
                 <form>
@@ -24,4 +24,5 @@ const createLoginTemplate = (login) =>`
             </div>
 `;
 
+// eslint-disable-next-line import/prefer-default-export
 export { createLoginTemplate };

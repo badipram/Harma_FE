@@ -15,7 +15,7 @@ const createDaftarPendudukTemplate = () => `
                     <span>Hubungan: Kepala Keluarga</span>
                 </div>
                 <div class="action">
-                    <a href=""><i class="fa fa-pencil"></i></a>
+                    <a href="/#/penduduk/tambah"><i class="fa fa-pencil"></i></a>
                     <a href=""><i class="fa fa-trash"></i></a>
                 </div>
             </div>
