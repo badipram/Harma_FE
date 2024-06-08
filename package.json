@@ -52,6 +52,8 @@
     "mysql2": "^3.10.0",
     "nanoid": "^5.0.7",
     "regenerator-runtime": "^0.14.0",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "sweetalert2": "^11.11.1",
+    "swiper": "^11.1.4"
   }
 }
