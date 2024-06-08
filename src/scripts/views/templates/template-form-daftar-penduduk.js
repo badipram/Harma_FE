@@ -11,20 +11,23 @@ const createFormDaftarPenduduk = () => `
                 </div>
                 
                 <div class="form-input">        
-                    <label for="tanggal">Tanggal Lahir</label>
-                    <input type="date" id="tanggal" name="tanggal" required>
+                    <label for="alamat">Alamat</label>
+                    <input type="text" id="alamat" name="alamat" required>
                 </div>
 
-                <div class="form-input">
-                <label for="status">Hubungan</label>
-                <select class="status" name="status" required>
-                    <option value="" disabled selected>Pilih Hubungan</option>
-                    <option value="kepala-keluarga">Kepala Keluarga</option>
-                    <option value="istri">Istri</option>
-                    <option value="anak">Anak</option>
-                </select>
-            </div>
-               
+                <div class="form-input">        
+                    <label for="tanggal">Tanggal Lahir</label>
+                    <input type="date" id="tanggal_lahir" name="tanggal" required>
+                </div>
+
+                <div class="form-input">        
+                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                    <select name="jenis_kelamin" id="jenis_kelamin">
+                        <option value="L">Laki-laki</option>
+                        <option value="P">Perempuan</option>
+                    </select>
+                </div>
+             
                 <div class="form-button">
                     <button type="submit">Tambah Data</button>
                 </div>
