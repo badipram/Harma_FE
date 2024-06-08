@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-param-reassign */
 
+import Swal from 'sweetalert2';
+
 const templateHtmlPenduduk = (penduduk, tanggalLahir) => `
     <div class="list-penduduk">
       <div class="content-penduduk" data-aos="fade-up" data-aos-duration="1200">
@@ -50,7 +52,16 @@ const buttonDeleteFunction = ({
   buttonDelete, deleteData, templateWarga, getData, id_keluarga,
 }) => {
   buttonDelete.addEventListener('click', async () => {
-    if (confirm('Apakah anda yakin ingin menghapus?')) {
+    if (await Swal.fire({
+      title: 'Apakah Anda Yakin?',
+      text: 'Anda tidak akan dapat mengembalikan ini!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, hapus saja!',
+      cancelButtonText: 'Batal',
+    })) {
       const { id } = buttonDelete;
       await deleteData(id);
 
