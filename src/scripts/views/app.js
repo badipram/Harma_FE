@@ -1,6 +1,7 @@
 import DrawerInitiator from '../utils/drawer-initiator';
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
+import dynamicRoute from '../utils/dynamic-route';
 
 class App {
   constructor({ button, drawer, content }) {
@@ -21,6 +22,7 @@ class App {
 
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
+    dynamicRoute(url);
     const page = routes[url];
     this._content.innerHTML = await page.render();
     await page.afterRender();

@@ -1,4 +1,4 @@
-const createGaleriTemplate = () => `
+const createGaleriTemplate = (galeri) => `
             <div class="title" data-aos="fade-down">
                 <h2>GALERI TERKINI</h2>
             </div>
@@ -38,5 +38,4 @@ const createGaleriTemplate = () => `
             </div>
 `;
 
-// eslint-disable-next-line import/prefer-default-export
 export { createGaleriTemplate };

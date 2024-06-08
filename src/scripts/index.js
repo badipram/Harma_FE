@@ -6,10 +6,6 @@ import { CountUp } from 'countup.js';
 import App from './views/app';
 import 'aos/dist/aos.css';
 import 'animate.css';
-// eslint-disable-next-line import/order, import/no-unresolved
-import Swiper from 'swiper/bundle';
-// eslint-disable-next-line import/no-unresolved
-import 'swiper/css/bundle';
 
 function initCountUpObserver() {
   const observerOptions = {
@@ -48,41 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
     content: document.querySelector('#mainContent'),
   });
 
-  const initializeSwiper = () => {
-    // eslint-disable-next-line no-unused-vars
-    const swiper = new Swiper('.swiper-container', {
-      slidesPerView: 1,
-      spaceBetween: 0,
-      loop: true,
-      autoplay: {
-        delay: 3000,
-      },
-      effect: 'fade',
-      fadeEffect: {
-        crossFade: true,
-      },
-      speed: 1000,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  };
-
   window.addEventListener('hashchange', async () => {
     await app.renderPage();
     initCountUpObserver();
-    initializeSwiper();
   });
 
   window.addEventListener('load', async () => {
     await app.renderPage();
     initCountUpObserver();
-    initializeSwiper();
   });
 
   const dropdown = document.querySelector('.dropdown');
