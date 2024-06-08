@@ -1,4 +1,4 @@
-const createPendudukTemplate = (penduduk) => `
+const createPendudukTemplate = () => `
     <div class="title" data-aos="fade-down">
         <h2>JUMLAH PENDUDUK KAMPUNG SERUT</h2>
     </div>
@@ -24,4 +24,5 @@ const createPendudukTemplate = (penduduk) => `
     </div>
 `;
 
+// eslint-disable-next-line import/prefer-default-export
 export { createPendudukTemplate };
