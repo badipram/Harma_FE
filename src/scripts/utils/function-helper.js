@@ -1,8 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-param-reassign */
 
-import Swal from 'sweetalert2';
-
 const templateHtmlPenduduk = (penduduk, tanggalLahir) => `
     <div class="list-penduduk">
       <div class="content-penduduk" data-aos="fade-up" data-aos-duration="1200">
@@ -52,47 +50,28 @@ const buttonDeleteFunction = ({
   buttonDelete, deleteData, templateWarga, getData, id_keluarga,
 }) => {
   buttonDelete.addEventListener('click', async () => {
-    const result = await Swal.fire({
-      title: 'Apakah anda yakin ingin menghapus?',
-      text: 'Anda tidak akan dapat mengembalikan ini!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Ya, hapus saja!',
-      cancelButtonText: 'Batal',
-    });
+    const { id } = buttonDelete;
+    await deleteData(id);
 
-    if (result.isConfirmed) {
-      const { id } = buttonDelete;
-      await deleteData(id);
-
-      Swal.fire(
-        'Terhapus!',
-        'Data telah berhasil dihapus.',
-        'success',
-      );
-
-      if (id_keluarga) {
-        const newPenduduk = await getData(id_keluarga);
-        const { Keluargas } = newPenduduk;
-        templateWarga.innerHTML = '';
-        makeKepalaKeluargainKeluarga(newPenduduk, templateWarga);
-        Keluargas.forEach((keluarga) => {
-          createPendudukElement(keluarga.Penduduk, templateWarga);
-        });
-      } else {
-        const newPenduduk = await getData();
-        console.log('berhasil');
-        templateWarga.innerHTML = '';
-        newPenduduk.forEach((penduduk) => {
-          if (penduduk.Penduduk) {
-            createPendudukElement(penduduk.Penduduk, templateWarga);
-          } else {
-            createPendudukElement(penduduk, templateWarga);
-          }
-        });
-      }
+    if (id_keluarga) {
+      const newPenduduk = await getData(id_keluarga);
+      const { Keluargas } = newPenduduk;
+      templateWarga.innerHTML = '';
+      makeKepalaKeluargainKeluarga(newPenduduk, templateWarga);
+      Keluargas.forEach((keluarga) => {
+        createPendudukElement(keluarga.Penduduk, templateWarga);
+      });
+    } else {
+      const newPenduduk = await getData();
+      console.log('berhasil');
+      templateWarga.innerHTML = '';
+      newPenduduk.forEach((penduduk) => {
+        if (penduduk.Penduduk) {
+          createPendudukElement(penduduk.Penduduk, templateWarga);
+        } else {
+          createPendudukElement(penduduk, templateWarga);
+        }
+      });
     }
   });
 };
