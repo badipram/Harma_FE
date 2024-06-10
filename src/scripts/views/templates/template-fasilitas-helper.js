@@ -1,29 +1,35 @@
+/* eslint-disable no-shadow */
+import fasilitas from '../../../public/fasilitas';
+
 const createFasilitasTemplate = () => `
-    <div class="title" data-aos="fade-down">
-        <h2>FASILITAS</h2>
-        <div class="btn-fasilitas">
-            <a href="#/fasilitas">Lihat Semua Fasilitas</a>
-        </div>
+  <div class="title" data-aos="fade-down">
+    <h2>FASILITAS</h2>
+    <div class="btn-fasilitas">
+      <button id="showALLFacility">Lihat Semua Fasilitas</button>
     </div>
-    <div class="wrapper-fasilitas" data-aos="fade-up" data-aos-duration="1200">
+  </div>
+  <div class="wrapper-fasilitas" data-aos="fade-up" data-aos-duration="1200">
     <div class="list-fasilitas">
+      ${fasilitas.slice(0, 3).map((fasilitas) => `
         <div class="content-fasilitas" data-aos="fade-up" data-aos-duration="1200">
-            <img src="" alt="">
-            <h2>Mushola Nurul AL-Lorem</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, ipsam.</p>
+          <img src="${fasilitas.imgSrc}" alt="${fasilitas.imgAlt}">
+          <h2>${fasilitas.title}</h2>
+          <p>${fasilitas.description}</p>
         </div>
-        <div class="content-fasilitas" data-aos="fade-up" data-aos-duration="1200">
-            <img src="" alt="">
-            <h2>Mushola Nurul AL-Lorem</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, ipsam.</p>
-        </div>
-        <div class="content-fasilitas" data-aos="fade-up" data-aos-duration="1200">
-            <img src="" alt="">
-            <h2>Mushola Nurul AL-Lorem</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, ipsam.</p>
-        </div>
+      `).join('')}
     </div>
-    </div>
+  </div>
 `;
 
-export { createFasilitasTemplate };
+const loadAllFasilitas = () => `
+  ${fasilitas.map((fasilitas) => `
+    <div class="content-fasilitas" data-aos="fade-up" data-aos-duration="1200">
+      <img src="${fasilitas.imgSrc}" alt="${fasilitas.imgAlt}">
+      <h2>${fasilitas.title}</h2>
+      <p>${fasilitas.description}</p>
+    </div>
+  `).join('')}
+`;
+
+// eslint-disable-next-line import/prefer-default-export
+export { createFasilitasTemplate, loadAllFasilitas };

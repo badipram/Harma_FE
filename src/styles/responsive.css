@@ -148,6 +148,13 @@
   }
 }
 
+@media screen and (max-width: 1440px) {
+  .wrapper-fasilitas {
+    margin: 0 10px 0 10px;
+  }
+
+}
+
 @media screen and (max-width: 650px) {
   footer .wrapper-footer .content-footer .info-footer {
     flex-flow: column nowrap;

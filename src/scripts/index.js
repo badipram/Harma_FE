@@ -4,6 +4,7 @@ import '../styles/responsive.css';
 import AOS from 'aos';
 import { CountUp } from 'countup.js';
 import App from './views/app';
+import renderFasilitas from './utils/show-all-facility';
 import 'aos/dist/aos.css';
 import 'animate.css';
 // eslint-disable-next-line import/order, import/no-unresolved
@@ -77,12 +78,14 @@ document.addEventListener('DOMContentLoaded', () => {
     await app.renderPage();
     initCountUpObserver();
     initializeSwiper();
+    renderFasilitas();
   });
 
   window.addEventListener('load', async () => {
     await app.renderPage();
     initCountUpObserver();
     initializeSwiper();
+    renderFasilitas();
   });
 
   const dropdown = document.querySelector('.dropdown');
