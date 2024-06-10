@@ -259,7 +259,9 @@ body {
   font-size: 30px;
 }
 
-.fasilitas .btn-fasilitas, .kegiatan .btn-kegiatan, .daftar-penduduk .btn-penduduk {
+#showALLFacility,
+.kegiatan .btn-kegiatan,
+.daftar-penduduk .btn-penduduk {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -269,18 +271,38 @@ body {
   border-radius: 10px 10px 0 10px;
   background-color: #1A4756;
   margin-right: 10px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
 }
 
-.fasilitas .btn-fasilitas a, .kegiatan .btn-kegiatan a, .daftar-penduduk .btn-penduduk a {
+#showALLFacility,
+.kegiatan .btn-kegiatan a,
+.daftar-penduduk .btn-penduduk a {
   color: #FFFFFF;
   text-decoration: none;
   font-size: 15px;
+  font-family: "Poppins", sans-serif;
 }
+
+.daftar-penduduk .btn-penduduk:hover {
+  background-color: #1391A5;
+}
+
+#showALLFacility:hover {
+  background-color: #1391A5;
+}
+
+.kegiatan .btn-kegiatan:hover {
+  background-color: #1391A5;
+}
+
 
 .wrapper-fasilitas, 
 .wrapper-galeri,
 .wrapper-kegiatan,
-.wrapper-penduduk, .wrapper-daftar-penduduk {
+.wrapper-penduduk,
+.wrapper-daftar-penduduk {
   background-color: #1A4756;
   margin: 0 10px 0 10px;
   border-radius: 5px;
@@ -313,6 +335,7 @@ body {
   height: 200px;
   background-color: grey;
   border-radius: 5px;
+  object-fit: cover;
 }
 
 /* Daftar Penduduk */
@@ -340,7 +363,6 @@ body {
   width: 100%;
   max-width: 280px;
   align-items: center;
-  cursor: pointer;
 }
 
 .list-penduduk .content-penduduk .wrapper-img {
@@ -802,11 +824,15 @@ footer .copyright-footer p {
   min-width: 44px;
   border: none;
   border-radius: 10px;
-  background-color: #1391A5;
+  background-color: #2A6478;
   color: #FFFFFF;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   cursor: pointer;
+}
+
+.form form .form-button button:hover {
+  background-color: #1391A5;
 }
 
 
