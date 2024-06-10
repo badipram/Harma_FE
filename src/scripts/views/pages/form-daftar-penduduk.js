@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-import Swal from 'sweetalert2';
 import { addPenduduk } from '../../data/main';
 import createFormDaftarPenduduk from '../templates/template-form-daftar-penduduk';
 
@@ -26,20 +25,9 @@ const FormDaftarPenduduk = {
 
       try {
         await addPenduduk(penduduk);
-        Swal.fire({
-          title: 'Berhasil!',
-          text: 'Penduduk telah berhasil ditambahkan.',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        });
+        console.log('Penduduk telah berhasil ditambahkan.');
       } catch (error) {
         console.error('Error saat menambahkan penduduk:', error);
-        Swal.fire({
-          title: 'Gagal!',
-          text: 'Terjadi masalah saat menambahkan penduduk. Silakan coba lagi.',
-          icon: 'error',
-          confirmButtonText: 'OK',
-        });
       }
     });
   },

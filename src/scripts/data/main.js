@@ -1,4 +1,6 @@
 /* eslint-disable consistent-return */
+import Swal from 'sweetalert2';
+
 const BASE_URL = 'http://localhost:3000';
 
 const tryLogin = async (login) => {
@@ -59,6 +61,24 @@ const getKeluargaById = async (id) => {
   }
 };
 
+// const addPenduduk = async (penduduk) => {
+//   try {
+//     const options = {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(penduduk),
+//     };
+//     const response = await fetch(`${BASE_URL}/penduduk/tambah`, options);
+//     const responseJson = await response.json();
+//     console.log(responseJson);
+//     return responseJson;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
 const addPenduduk = async (penduduk) => {
   try {
     const options = {
@@ -70,12 +90,47 @@ const addPenduduk = async (penduduk) => {
     };
     const response = await fetch(`${BASE_URL}/penduduk/tambah`, options);
     const responseJson = await response.json();
-    console.log(responseJson);
+
+    if (response.ok) {
+      Swal.fire({
+        title: 'Berhasil!',
+        text: 'Penduduk telah berhasil ditambahkan.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+    } else {
+      throw new Error(responseJson.message);
+    }
+
     return responseJson;
   } catch (error) {
-    console.log(error);
+    console.error('Error saat menambahkan penduduk:', error);
+    Swal.fire({
+      title: 'Gagal!',
+      text: 'Terjadi masalah saat menambahkan penduduk. Silakan coba lagi.',
+      icon: 'error',
+      confirmButtonText: 'OK',
+    });
   }
 };
+
+// const addKepalaKeluarga = async (id) => {
+//   try {
+//     const options = {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(id),
+//     };
+//     const response = await fetch(`${BASE_URL}/kepala-keluarga/tambah`, options);
+//     const responseJson = await response.json();
+//     console.log(responseJson);
+//     return responseJson;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const addKepalaKeluarga = async (id) => {
   try {
@@ -88,12 +143,53 @@ const addKepalaKeluarga = async (id) => {
     };
     const response = await fetch(`${BASE_URL}/kepala-keluarga/tambah`, options);
     const responseJson = await response.json();
-    console.log(responseJson);
+
+    if (response.ok) {
+      Swal.fire({
+        title: 'Berhasil!',
+        text: 'Anggota keluarga telah berhasil ditambahkan.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+    } else {
+      Swal.fire({
+        title: 'Gagal!',
+        text: responseJson.message || 'Terjadi masalah saat menambahkan anggota keluarga. Silakan coba lagi.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+    }
+
     return responseJson;
   } catch (error) {
     console.log(error);
+
+    Swal.fire({
+      title: 'Gagal!',
+      text: 'Terjadi masalah saat menambahkan anggota keluarga. Silakan coba lagi.',
+      icon: 'error',
+      confirmButtonText: 'OK',
+    });
   }
 };
+
+// const addKeluarga = async (keluarga) => {
+//   try {
+//     const options = {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(keluarga),
+//     };
+//     const response = await fetch(`${BASE_URL}/keluarga/${keluarga.id_kepala_keluarga}/tambah`, options);
+//     const responseJson = await response.json();
+//     console.log(responseJson);
+//     return responseJson;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const addKeluarga = async (keluarga) => {
   try {
@@ -106,12 +202,53 @@ const addKeluarga = async (keluarga) => {
     };
     const response = await fetch(`${BASE_URL}/keluarga/${keluarga.id_kepala_keluarga}/tambah`, options);
     const responseJson = await response.json();
-    console.log(responseJson);
+
+    if (response.ok) {
+      Swal.fire({
+        title: 'Berhasil!',
+        text: 'Anggota keluarga telah berhasil ditambahkan.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+    } else {
+      Swal.fire({
+        title: 'Gagal!',
+        text: responseJson.message || 'Terjadi masalah saat menambahkan anggota keluarga. Silakan coba lagi.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+    }
+
     return responseJson;
   } catch (error) {
     console.log(error);
+
+    Swal.fire({
+      title: 'Gagal!',
+      text: 'Terjadi masalah saat menambahkan anggota keluarga. Silakan coba lagi.',
+      icon: 'error',
+      confirmButtonText: 'OK',
+    });
   }
 };
+
+// const editPendudukById = async (penduduk, id) => {
+//   try {
+//     const options = {
+//       method: 'PUT',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(penduduk),
+//     };
+//     const response = await fetch(`${BASE_URL}/penduduk/${id}/edit`, options);
+//     const responseJson = await response.json();
+//     console.log(responseJson);
+//     return responseJson;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const editPendudukById = async (penduduk, id) => {
   try {
@@ -124,50 +261,175 @@ const editPendudukById = async (penduduk, id) => {
     };
     const response = await fetch(`${BASE_URL}/penduduk/${id}/edit`, options);
     const responseJson = await response.json();
-    console.log(responseJson);
+
+    if (response.ok) {
+      Swal.fire({
+        title: 'Berhasil!',
+        text: 'Data penduduk telah berhasil diperbarui.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+    } else {
+      Swal.fire({
+        title: 'Gagal!',
+        text: responseJson.message || 'Terjadi masalah saat memperbarui data penduduk. Silakan coba lagi.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+    }
+
     return responseJson;
   } catch (error) {
     console.log(error);
+
+    Swal.fire({
+      title: 'Gagal!',
+      text: 'Terjadi masalah saat memperbarui data penduduk. Silakan coba lagi.',
+      icon: 'error',
+      confirmButtonText: 'OK',
+    });
   }
 };
+
+// const deletePendudukById = async (id) => {
+//   const options = {
+//     method: 'DELETE',
+//   };
+//   try {
+//     const response = await fetch(`${BASE_URL}/penduduk/${id}`, options);
+//     const responseJson = await response.json();
+//     console.log(responseJson);
+//     return responseJson;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const deletePendudukById = async (id) => {
   const options = {
     method: 'DELETE',
   };
   try {
-    const response = await fetch(`${BASE_URL}/penduduk/${id}`, options);
-    const responseJson = await response.json();
-    console.log(responseJson);
-    return responseJson;
+    const result = await Swal.fire({
+      title: 'Apakah anda yakin ingin menghapus data penduduk ini?',
+      text: 'Anda tidak akan dapat mengembalikan ini!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, hapus saja!',
+      cancelButtonText: 'Batal',
+    });
+
+    if (result.isConfirmed) {
+      const response = await fetch(`${BASE_URL}/penduduk/${id}`, options);
+      const responseJson = await response.json();
+      console.log(responseJson);
+
+      Swal.fire(
+        'Terhapus!',
+        'Data penduduk telah berhasil dihapus.',
+        'success',
+      );
+
+      return responseJson;
+    }
   } catch (error) {
     console.log(error);
   }
 };
+
+// const deleteKepalaKeluargaById = async (id) => {
+//   const options = {
+//     method: 'DELETE',
+//   };
+//   try {
+//     const response = await fetch(`${BASE_URL}/kepala-keluarga/${id}`, options);
+//     const responseJson = await response.json();
+//     console.log(responseJson);
+//     return responseJson;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const deleteKepalaKeluargaById = async (id) => {
   const options = {
     method: 'DELETE',
   };
   try {
-    const response = await fetch(`${BASE_URL}/kepala-keluarga/${id}`, options);
-    const responseJson = await response.json();
-    console.log(responseJson);
-    return responseJson;
+    const result = await Swal.fire({
+      title: 'Apakah anda yakin ingin menghapus data kepala keluarga ini?',
+      text: 'Anda tidak akan dapat mengembalikan ini!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, hapus saja!',
+      cancelButtonText: 'Batal',
+    });
+
+    if (result.isConfirmed) {
+      const response = await fetch(`${BASE_URL}/kepala-keluarga/${id}`, options);
+      const responseJson = await response.json();
+      console.log(responseJson);
+
+      Swal.fire(
+        'Terhapus!',
+        'Data kepala keluarga telah berhasil dihapus.',
+        'success',
+      );
+
+      return responseJson;
+    }
   } catch (error) {
     console.log(error);
   }
 };
+
+// const deleteKeluargaById = async (id) => {
+//   const options = {
+//     method: 'DELETE',
+//   };
+//   try {
+//     const response = await fetch(`${BASE_URL}/keluarga/${id}`, options);
+//     const responseJson = await response.json();
+//     console.log(responseJson);
+//     return responseJson;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const deleteKeluargaById = async (id) => {
   const options = {
     method: 'DELETE',
   };
   try {
-    const response = await fetch(`${BASE_URL}/keluarga/${id}`, options);
-    const responseJson = await response.json();
-    console.log(responseJson);
-    return responseJson;
+    const result = await Swal.fire({
+      title: 'Apakah anda yakin ingin menghapus data keluarga ini?',
+      text: 'Anda tidak akan dapat mengembalikan ini!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, hapus saja!',
+      cancelButtonText: 'Batal',
+    });
+
+    if (result.isConfirmed) {
+      const response = await fetch(`${BASE_URL}/keluarga/${id}`, options);
+      const responseJson = await response.json();
+      console.log(responseJson);
+
+      Swal.fire(
+        'Terhapus!',
+        'Data keluarga telah berhasil dihapus.',
+        'success',
+      );
+
+      return responseJson;
+    }
   } catch (error) {
     console.log(error);
   }
