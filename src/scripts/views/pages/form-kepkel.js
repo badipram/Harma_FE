@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-import Swal from 'sweetalert2';
 import { getAllPenduduk, addKepalaKeluarga } from '../../data/main';
 import createFormGetPenduduk from '../templates/template-form-kepkel-helper';
 
@@ -28,19 +27,8 @@ const FormKepalaKeluarga = {
 
       try {
         await addKepalaKeluarga({ id_kepala_keluarga, id_penduduk });
-        Swal.fire({
-          title: 'Berhasil!',
-          text: 'Kepala keluarga berhasil ditambahkan.',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        });
       } catch (error) {
-        Swal.fire({
-          title: 'Gagal!',
-          text: 'Terjadi kesalahan saat menambahkan kepala keluarga.',
-          icon: 'error',
-          confirmButtonText: 'OK',
-        });
+        console.error('Terjadi kesalahan saat menambahkan kepala keluarga:', error);
       }
     });
   },
