@@ -1,4 +1,4 @@
-const createKegiatanTemplate = (kegiatan) => `
+const createKegiatanTemplate = () => `
 <div class="title" data-aos="fade-down">
     <h2>JADWAL KEGIATAN RT/RW 003/005</h2>
 </div>

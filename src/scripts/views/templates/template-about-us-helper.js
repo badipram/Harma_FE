@@ -1,4 +1,4 @@
-const createAboutUsTemplate = (member) => `
+const createAboutUsTemplate = () => `
     <div class="about-header" data-aos="fade-down" data-aos-duration="1200">
             <img src="./images/brand-logo.png" alt="HARMA Logo" class="about-logo">
             <div class="about-description">
@@ -37,4 +37,5 @@ const createAboutUsTemplate = (member) => `
     </div>
     `;
 
-export { createAboutUsTemplate }; 
+// eslint-disable-next-line import/prefer-default-export
+export { createAboutUsTemplate };
