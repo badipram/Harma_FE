@@ -377,7 +377,11 @@ body {
 }
 
 .list-penduduk .content-penduduk .wrapper-img i{
-  font-size: 25px;
+  font-size: 2px;
+}
+
+.wrapper-daftar-penduduk .list-penduduk .content-penduduk .wrapper-img a {
+  color: black;
 }
 
 .list-penduduk .content-penduduk .description-penduduk {
