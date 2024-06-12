@@ -6,7 +6,7 @@ import createDaftarPendudukTemplate from '../templates/template-daftar-penduduk-
 import { deleteKeluargaById, getKeluargaById } from '../../data/main';
 import UrlParser from '../../routes/url-parser';
 import {
-  buttonDeleteFunction, createPendudukElement, makeKepalaKeluargainKeluarga,
+  buttonDeleteFunction, checkTokenLogin, createPendudukElement, makeKepalaKeluargainKeluarga,
 } from '../../utils/function-helper';
 
 const Keluarga = {
@@ -36,7 +36,7 @@ const Keluarga = {
     makeKepalaKeluargainKeluarga(keluargaById, templateWarga);
 
     // // Data Keluarga untuk Anggota Keluarga
-    Keluargas.forEach((keluarga) => {
+    Keluargas.forEach(async (keluarga) => {
       createPendudukElement(keluarga.Penduduk, templateWarga);
 
       const descriptions = document.querySelectorAll('.description-penduduk');
@@ -49,11 +49,18 @@ const Keluarga = {
       });
 
       const buttonsDelete = document.querySelectorAll('.button-delete');
+      const { error } = await checkTokenLogin();
       buttonsDelete.forEach((buttonDelete) => {
-        buttonDelete.id = `${keluarga.id_keluarga}`;
-        buttonDeleteFunction({
-          buttonDelete, deleteData: deleteKeluargaById, templateWarga, getData: getKeluargaById, id_keluarga: id,
-        });
+        if (!error) {
+          buttonDelete.id = `${keluarga.id_keluarga}`;
+          buttonDeleteFunction({
+            buttonDelete, deleteData: deleteKeluargaById, templateWarga, getData: getKeluargaById, id_keluarga: id,
+          });
+        } else {
+          buttonDelete.addEventListener('click', () => {
+            alert('login dulu!');
+          });
+        }
       });
     });
   },

@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { getKepalaKeluarga, deleteKepalaKeluargaById } from '../../data/main';
-import { createKepalaKeluargaElement, buttonDeleteFunction } from '../../utils/function-helper';
+import { createKepalaKeluargaElement, buttonDeleteFunction, checkTokenLogin } from '../../utils/function-helper';
 import createDaftarPendudukTemplate from '../templates/template-daftar-penduduk-helper';
 
 const KepalaKeluarga = {
@@ -40,10 +40,17 @@ const KepalaKeluarga = {
     });
 
     const buttonsDelete = document.querySelectorAll('.button-delete');
+    const { error } = await checkTokenLogin();
     buttonsDelete.forEach((buttonDelete) => {
-      buttonDeleteFunction({
-        buttonDelete, deleteData: deleteKepalaKeluargaById, templateWarga, getData: getKepalaKeluarga,
-      });
+      if (!error) {
+        buttonDeleteFunction({
+          buttonDelete, deleteData: deleteKepalaKeluargaById, templateWarga, getData: getKepalaKeluarga,
+        });
+      } else {
+        buttonDelete.addEventListener('click', () => {
+          alert('login dulu!');
+        });
+      }
     });
   },
 };

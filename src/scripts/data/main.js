@@ -12,7 +12,9 @@ const tryLogin = async (login) => {
     };
     const response = await fetch(`${BASE_URL}/login`, options);
     const responseJson = await response.json();
-    console.log(responseJson);
+    const { token } = responseJson;
+    localStorage.setItem('token', token);
+
     return responseJson;
   } catch (error) {
     console.log(error);
@@ -173,7 +175,22 @@ const deleteKeluargaById = async (id) => {
   }
 };
 
+const tryAccessProtectedRoute = async (token) => {
+  const options = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const response = await fetch(`${BASE_URL}/penduduk/tambah`, options);
+    const responseJson = await response.json();
+    return responseJson;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export {
   tryLogin, getAllPenduduk, getPendudukById, getKepalaKeluarga, getKeluargaById,
-  addPenduduk, addKepalaKeluarga, addKeluarga, deletePendudukById, deleteKepalaKeluargaById, deleteKeluargaById, editPendudukById,
+  addPenduduk, addKepalaKeluarga, addKeluarga, deletePendudukById, deleteKepalaKeluargaById, deleteKeluargaById, editPendudukById, tryAccessProtectedRoute,
 };

@@ -2,6 +2,7 @@
 /* eslint-disable no-param-reassign */
 
 import Swal from 'sweetalert2';
+import { tryAccessProtectedRoute } from '../data/main';
 
 const templateHtmlPenduduk = (penduduk, tanggalLahir) => `
     <div class="list-penduduk">
@@ -97,6 +98,12 @@ const buttonDeleteFunction = ({
   });
 };
 
+const checkTokenLogin = async () => {
+  const token = localStorage.getItem('token');
+  const protectedRoute = await tryAccessProtectedRoute(token);
+  return protectedRoute;
+};
+
 export {
-  createPendudukElement, createKepalaKeluargaElement, buttonDeleteFunction, templateHtmlPenduduk, makeKepalaKeluargainKeluarga,
+  createPendudukElement, createKepalaKeluargaElement, buttonDeleteFunction, templateHtmlPenduduk, makeKepalaKeluargainKeluarga, checkTokenLogin,
 };

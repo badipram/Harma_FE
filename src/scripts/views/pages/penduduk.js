@@ -1,6 +1,6 @@
 import createDaftarPendudukTemplate from '../templates/template-daftar-penduduk-helper';
 import { deletePendudukById, getAllPenduduk } from '../../data/main';
-import { buttonDeleteFunction, createPendudukElement } from '../../utils/function-helper';
+import { buttonDeleteFunction, checkTokenLogin, createPendudukElement } from '../../utils/function-helper';
 
 const Penduduk = {
   async render() {
@@ -28,10 +28,17 @@ const Penduduk = {
     });
 
     const buttonsDelete = document.querySelectorAll('.button-delete');
+    const { error } = await checkTokenLogin();
     buttonsDelete.forEach((buttonDelete) => {
-      buttonDeleteFunction({
-        buttonDelete, deleteData: deletePendudukById, templateWarga, getData: getAllPenduduk,
-      });
+      if (!error) {
+        buttonDeleteFunction({
+          buttonDelete, deleteData: deletePendudukById, templateWarga, getData: getAllPenduduk,
+        });
+      } else {
+        buttonDelete.addEventListener('click', () => {
+          alert('login dulu!');
+        });
+      }
     });
   },
 };
