@@ -1,3 +1,5 @@
+/* eslint-disable import/order */
+/* eslint-disable import/no-unresolved */
 import 'regenerator-runtime';
 import '../styles/main.css';
 import '../styles/responsive.css';
@@ -7,9 +9,7 @@ import App from './views/app';
 import renderFasilitas from './utils/show-all-facility';
 import 'aos/dist/aos.css';
 import 'animate.css';
-// eslint-disable-next-line import/order, import/no-unresolved
 import Swiper from 'swiper/bundle';
-// eslint-disable-next-line import/no-unresolved
 import 'swiper/css/bundle';
 
 function initCountUpObserver() {

@@ -1,5 +1,6 @@
 import { createLoginTemplate } from '../templates/template-login-helper';
 import { tryLogin } from '../../data/main';
+import { updateLoginStatus } from '../../utils/logout-helper';
 
 const Login = {
   async render() {
@@ -11,12 +12,13 @@ const Login = {
   async afterRender() {
     const form = document.querySelector('form');
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const email = document.querySelector('#email').value;
       const password = document.querySelector('#password').value;
       const login = { email, password };
-      tryLogin(login);
+      await tryLogin(login);
+      updateLoginStatus();
     });
   },
 };
