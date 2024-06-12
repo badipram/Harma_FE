@@ -1,7 +1,27 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable consistent-return */
 import Swal from 'sweetalert2';
+import { updateLoginStatus } from '../utils/logout-helper';
 
 const BASE_URL = 'http://localhost:3000';
+
+// const tryLogin = async (login) => {
+//   try {
+//     const options = {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(login),
+//     };
+//     const response = await fetch(`${BASE_URL}/login`, options);
+//     const responseJson = await response.json();
+//     console.log(responseJson);
+//     return responseJson;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const tryLogin = async (login) => {
   try {
@@ -14,12 +34,48 @@ const tryLogin = async (login) => {
     };
     const response = await fetch(`${BASE_URL}/login`, options);
     const responseJson = await response.json();
-    console.log(responseJson);
-    return responseJson;
+
+    if (response.status === 200) {
+      const { token } = responseJson;
+      localStorage.setItem('token', token);
+      updateLoginStatus();
+      Swal.fire({
+        icon: 'success',
+        title: 'Login Berhasil',
+        text: 'Anda berhasil login!',
+        confirmButtonText: 'OK',
+      });
+      return responseJson;
+    }
+    Swal.fire({
+      icon: 'error',
+      title: 'Login Gagal',
+      text: 'Username atau password salah.',
+      confirmButtonText: 'OK',
+    });
   } catch (error) {
     console.log(error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Terjadi Kesalahan',
+      text: 'Terjadi kesalahan saat mencoba login. Silakan coba lagi.',
+      confirmButtonText: 'OK',
+    });
   }
 };
+
+const logout = () => {
+  localStorage.removeItem('token');
+  updateLoginStatus();
+  Swal.fire({
+    icon: 'success',
+    title: 'Logout Berhasil',
+    text: 'Anda berhasil logout!',
+    confirmButtonText: 'OK',
+  });
+};
+
+window.addEventListener('DOMContentLoaded', updateLoginStatus);
 
 const getAllPenduduk = async () => {
   try {
@@ -435,7 +491,22 @@ const deleteKeluargaById = async (id) => {
   }
 };
 
+const tryAccessProtectedRoute = async (token) => {
+  const options = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const response = await fetch(`${BASE_URL}/penduduk/tambah`, options);
+    const responseJson = await response.json();
+    return responseJson;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export {
   tryLogin, getAllPenduduk, getPendudukById, getKepalaKeluarga, getKeluargaById,
-  addPenduduk, addKepalaKeluarga, addKeluarga, deletePendudukById, deleteKepalaKeluargaById, deleteKeluargaById, editPendudukById,
+  addPenduduk, addKepalaKeluarga, addKeluarga, deletePendudukById, deleteKepalaKeluargaById, deleteKeluargaById, editPendudukById, tryAccessProtectedRoute, logout,
 };
