@@ -21,18 +21,19 @@
 
 // export default dynamicRoute;
 
+// eslint-disable-next-line import/named
 import routes from '../routes/routes';
 import Keluarga from '../views/pages/keluarga';
 import UrlParser from '../routes/url-parser';
 import FormKeluarga from '../views/pages/form-keluarga';
 import FormEditPenduduk from '../views/pages/form-edit-penduduk';
-// eslint-disable-next-line import/named
 import { checkTokenLogin } from './function-helper';
 import FormDaftarPenduduk from '../views/pages/form-daftar-penduduk';
 import FormKepalaKeluarga from '../views/pages/form-kepkel';
 import FormKegiatan from '../views/pages/form-kegiatan';
+import Login from '../views/pages/login';
 
-async function dynamicRoute(url) {
+async function addRouteHaveId(url) {
   const urlObj = UrlParser._urlSplitter(url);
   const { error } = await checkTokenLogin();
   if (urlObj.resource === 'keluarga' && urlObj.id) {
@@ -54,6 +55,10 @@ async function dynamicRoute(url) {
       routes[url] = FormEditPenduduk;
     }
   }
+}
+
+async function addProtectedRoute() {
+  const { error } = await checkTokenLogin();
 
   if (error) {
     delete routes['/penduduk/tambah'];
@@ -64,6 +69,12 @@ async function dynamicRoute(url) {
     routes['/kepala-keluarga/tambah'] = FormKepalaKeluarga;
     routes['/kegiatan/tambah'] = FormKegiatan;
   }
+
+  if (!error) {
+    delete routes['/login'];
+  } else {
+    routes['/login'] = Login;
+  }
 }
 
-export default dynamicRoute;
+export { addRouteHaveId, addProtectedRoute };

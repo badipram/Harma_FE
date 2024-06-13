@@ -1,7 +1,7 @@
 import DrawerInitiator from '../utils/drawer-initiator';
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
-import dynamicRoute from '../utils/dynamic-route';
+import { addProtectedRoute, addRouteHaveId } from '../utils/dynamic-route';
 
 class App {
   constructor({ button, drawer, content }) {
@@ -22,8 +22,8 @@ class App {
 
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
-    // dynamicRoute(url);
-    await dynamicRoute(url);
+    await addRouteHaveId(url);
+    await addProtectedRoute();
     const page = routes[url];
     this._content.innerHTML = await page.render();
     await page.afterRender();

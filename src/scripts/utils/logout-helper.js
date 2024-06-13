@@ -2,18 +2,20 @@
 /* eslint-disable no-use-before-define */
 import Swal from 'sweetalert2';
 import { logout } from '../data/main';
+import { checkTokenLogin } from './function-helper';
 
-const updateLoginStatus = () => {
-  const token = localStorage.getItem('token');
+const updateLoginStatus = async () => {
+  // const token = localStorage.getItem('token');
   const loginLink = document.querySelector('a.login');
-  if (token) {
-    loginLink.textContent = 'Logout';
-    loginLink.removeEventListener('click', handleLoginClick);
-    loginLink.addEventListener('click', handleLogoutClick);
-  } else {
+  const { error } = await checkTokenLogin();
+  if (error) {
     loginLink.textContent = 'Login';
     loginLink.removeEventListener('click', handleLogoutClick);
     loginLink.addEventListener('click', handleLoginClick);
+  } else {
+    loginLink.textContent = 'Logout';
+    loginLink.removeEventListener('click', handleLoginClick);
+    loginLink.addEventListener('click', handleLogoutClick);
   }
 };
 
@@ -34,6 +36,7 @@ const handleLogoutClick = (event) => {
   }).then((result) => {
     if (result.isConfirmed) {
       logout();
+      localStorage.removeItem('token');
     }
   });
 };

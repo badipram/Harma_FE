@@ -19,6 +19,7 @@ const Login = {
       const login = { email, password };
       await tryLogin(login);
       updateLoginStatus();
+      window.location.href = '#/beranda';
     });
   },
 };

@@ -498,7 +498,7 @@ const tryAccessProtectedRoute = async (token) => {
     },
   };
   try {
-    const response = await fetch(`${BASE_URL}/penduduk/tambah`, options);
+    const response = await fetch(`${BASE_URL}/secured-route`, options);
     const responseJson = await response.json();
     return responseJson;
   } catch (error) {
