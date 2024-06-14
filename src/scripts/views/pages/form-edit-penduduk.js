@@ -27,11 +27,11 @@ const FormEditPenduduk = {
 
     if (pendudukById.jenis_kelamin === 'L') {
       jenis_kelamin.value = 'L';
-    } else if (jenis_kelamin === 'P') {
+    } else if (pendudukById.jenis_kelamin === 'P') {
       jenis_kelamin.value = 'P';
     }
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       const penduduk = {
@@ -41,7 +41,8 @@ const FormEditPenduduk = {
         jenis_kelamin: jenis_kelamin.value,
       };
 
-      editPendudukById(penduduk, id);
+      await editPendudukById(penduduk, id);
+      window.location.href = '#/penduduk';
     });
   },
 };

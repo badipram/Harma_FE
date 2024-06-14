@@ -27,6 +27,7 @@ const FormKepalaKeluarga = {
 
       try {
         await addKepalaKeluarga({ id_kepala_keluarga, id_penduduk });
+        window.location.href = '#/kepala-keluarga';
       } catch (error) {
         console.error('Terjadi kesalahan saat menambahkan kepala keluarga:', error);
       }

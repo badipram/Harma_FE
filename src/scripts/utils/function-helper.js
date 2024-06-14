@@ -1,88 +1,9 @@
-// /* eslint-disable camelcase */
-// /* eslint-disable no-param-reassign */
-
-// const templateHtmlPenduduk = (penduduk, tanggalLahir) => `
-//     <div class="list-penduduk">
-//       <div class="content-penduduk" data-aos="fade-up" data-aos-duration="1200">
-//           <div class="wrapper-img">
-//             <a>
-//               <i class="fa fa-user"></i>
-//             </a>
-//           </div>
-//           <div class="description-penduduk">
-//               <span>Nama: ${penduduk.nama}</span>
-//               <span>Tgl Lahir: ${tanggalLahir}</span>
-//               <span>Alamat: ${penduduk.alamat}</span>
-//               <span>Jenis Kelamin: ${penduduk.jenis_kelamin}</span>
-//           </div>
-//           <div class="action">
-//               <a href="/#/penduduk/${penduduk.id_penduduk}/edit" class="button-edit"><i class="fa fa-pencil"></i></a>
-//               <a class="button-delete" id="${penduduk.id_penduduk}"><i class="fa fa-trash"></i></a>
-//           </div>
-//       </div>
-//     </div>
-// `;
-
-// const createPendudukElement = (penduduk, template) => {
-//   const date = new Date(penduduk.tanggal_lahir);
-//   const tanggalLahir = date.toLocaleDateString('en-GB').replace(/\//g, '-');
-//   template.innerHTML += templateHtmlPenduduk(penduduk, tanggalLahir);
-// };
-
-// const createKepalaKeluargaElement = (kepalaKeluarga, template) => {
-//   const date = new Date(kepalaKeluarga.Penduduk.tanggal_lahir);
-//   const tanggalLahir = date.toLocaleDateString('en-GB').replace(/\//g, '-');
-
-//   template.innerHTML += templateHtmlPenduduk(kepalaKeluarga.Penduduk, tanggalLahir);
-// };
-
-// const makeKepalaKeluargainKeluarga = (keluargaById, templateWarga) => {
-//   createKepalaKeluargaElement(keluargaById, templateWarga);
-//   const description = document.querySelector('.description-penduduk');
-//   description.innerHTML += `
-//     <span>Hubungan: Kepala Keluarga</span>
-//   `;
-//   const deleteButton = document.querySelector('.button-delete');
-//   deleteButton.remove();
-// };
-
-// const buttonDeleteFunction = ({
-//   buttonDelete, deleteData, templateWarga, getData, id_keluarga,
-// }) => {
-//   buttonDelete.addEventListener('click', async () => {
-//     const { id } = buttonDelete;
-//     await deleteData(id);
-
-//     if (id_keluarga) {
-//       const newPenduduk = await getData(id_keluarga);
-//       const { Keluargas } = newPenduduk;
-//       templateWarga.innerHTML = '';
-//       makeKepalaKeluargainKeluarga(newPenduduk, templateWarga);
-//       Keluargas.forEach((keluarga) => {
-//         createPendudukElement(keluarga.Penduduk, templateWarga);
-//       });
-//     } else {
-//       const newPenduduk = await getData();
-//       console.log('berhasil');
-//       templateWarga.innerHTML = '';
-//       newPenduduk.forEach((penduduk) => {
-//         if (penduduk.Penduduk) {
-//           createPendudukElement(penduduk.Penduduk, templateWarga);
-//         } else {
-//           createPendudukElement(penduduk, templateWarga);
-//         }
-//       });
-//     }
-//   });
-// };
-
-// export {
-//   createPendudukElement, createKepalaKeluargaElement, buttonDeleteFunction, templateHtmlPenduduk, makeKepalaKeluargainKeluarga,
-// };
-
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
+/* eslint-disable import/no-cycle */
 /* eslint-disable camelcase */
 /* eslint-disable no-param-reassign */
-
+import Swal from 'sweetalert2';
 import { tryAccessProtectedRoute } from '../data/main';
 
 const templateHtmlPenduduk = (penduduk, tanggalLahir) => `
@@ -107,21 +28,73 @@ const templateHtmlPenduduk = (penduduk, tanggalLahir) => `
     </div>
 `;
 
-const createPendudukElement = (penduduk, template) => {
+const createPendudukElement = ({
+  penduduk, templateWarga, deleteData, getData, id_kepala_keluarga,
+}) => {
   const date = new Date(penduduk.tanggal_lahir);
   const tanggalLahir = date.toLocaleDateString('en-GB').replace(/\//g, '-');
-  template.innerHTML += templateHtmlPenduduk(penduduk, tanggalLahir);
+  templateWarga.innerHTML += templateHtmlPenduduk(penduduk, tanggalLahir);
+
+  const buttonsDelete = document.querySelectorAll('.button-delete');
+  buttonsDelete.forEach((buttonDelete) => {
+    eventButtonDelete({
+      buttonDelete, deleteData, templateWarga, getData, id_kepala_keluarga,
+    });
+  });
+
+  const buttonsEdit = document.querySelectorAll('.button-edit');
+  buttonsEdit.forEach((buttonEdit) => {
+    eventButtonEdit({
+      buttonEdit, id_penduduk: penduduk.id_penduduk,
+    });
+  });
+
+  if (id_kepala_keluarga) {
+    const descriptions = document.querySelectorAll('.description-penduduk');
+    descriptions.forEach((description, index) => {
+      if (index > 0) {
+        description.innerHTML += `
+            <span>Hubungan: ${penduduk.hubungan}</span>
+          `;
+      }
+    });
+
+    buttonsDelete[buttonsDelete.length - 1].id = `${penduduk.id_keluarga}`;
+  }
 };
 
-const createKepalaKeluargaElement = (kepalaKeluarga, template) => {
+const createKepalaKeluargaElement = ({
+  kepalaKeluarga, templateWarga, deleteData, getData,
+}) => {
   const date = new Date(kepalaKeluarga.Penduduk.tanggal_lahir);
   const tanggalLahir = date.toLocaleDateString('en-GB').replace(/\//g, '-');
+  templateWarga.innerHTML += templateHtmlPenduduk(kepalaKeluarga.Penduduk, tanggalLahir);
 
-  template.innerHTML += templateHtmlPenduduk(kepalaKeluarga.Penduduk, tanggalLahir);
+  const tagALinks = document.querySelectorAll('.wrapper-img a');
+  tagALinks[tagALinks.length - 1].href = `/#/keluarga/${kepalaKeluarga.id_kepala_keluarga}`;
+
+  const buttonsDelete = document.querySelectorAll('.button-delete');
+  buttonsDelete[buttonsDelete.length - 1].id = kepalaKeluarga.id_kepala_keluarga;
+  buttonsDelete.forEach((buttonDelete) => {
+    eventButtonDelete({
+      buttonDelete, deleteData, templateWarga, getData,
+    });
+  });
+
+  if (!kepalaKeluarga.Keluargas) {
+    const buttonEdit = document.querySelectorAll('.button-edit');
+    buttonEdit.forEach((btnEdit) => {
+      btnEdit.remove();
+    });
+  }
 };
 
-const makeKepalaKeluargainKeluarga = (keluargaById, templateWarga) => {
-  createKepalaKeluargaElement(keluargaById, templateWarga);
+const makeKepalaKeluargainKeluarga = ({
+  keluargaById, templateWarga, deleteData, getData,
+}) => {
+  createKepalaKeluargaElement({
+    kepalaKeluarga: keluargaById, templateWarga, deleteData, getData,
+  });
   const description = document.querySelector('.description-penduduk');
   description.innerHTML += `
     <span>Hubungan: Kepala Keluarga</span>
@@ -130,34 +103,78 @@ const makeKepalaKeluargainKeluarga = (keluargaById, templateWarga) => {
   deleteButton.remove();
 };
 
-const buttonDeleteFunction = ({
-  buttonDelete, deleteData, templateWarga, getData, id_keluarga,
+const eventButtonDelete = async ({
+  buttonDelete, deleteData, templateWarga, getData, id_kepala_keluarga,
 }) => {
-  buttonDelete.addEventListener('click', async () => {
-    const { id } = buttonDelete;
-    await deleteData(id);
+  const { error } = await checkTokenLogin();
+  if (!error) {
+    buttonDelete.addEventListener('click', () => {
+      buttonDeleteFunction({
+        buttonDelete, deleteData, templateWarga, getData, id_kepala_keluarga,
+      });
+    });
+  } else {
+    buttonDelete.addEventListener('click', () => {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Login Dulu!',
+        text: 'Anda harus login terlebih dahulu untuk menghapus data.',
+        confirmButtonText: 'OK',
+      });
+    });
+  }
+};
 
-    if (id_keluarga) {
-      const newPenduduk = await getData(id_keluarga);
-      const { Keluargas } = newPenduduk;
-      templateWarga.innerHTML = '';
-      makeKepalaKeluargainKeluarga(newPenduduk, templateWarga);
-      Keluargas.forEach((keluarga) => {
-        createPendudukElement(keluarga.Penduduk, templateWarga);
+const eventButtonEdit = async ({
+  buttonEdit, id_penduduk,
+}) => {
+  const { error } = await checkTokenLogin();
+  if (error) {
+    buttonEdit.addEventListener('click', (event) => {
+      event.preventDefault();
+      Swal.fire({
+        icon: 'warning',
+        title: 'Login Dulu!',
+        text: 'Anda harus login terlebih dahulu untuk mengedit data.',
+        confirmButtonText: 'OK',
       });
-    } else {
-      const newPenduduk = await getData();
-      console.log('berhasil');
-      templateWarga.innerHTML = '';
-      newPenduduk.forEach((penduduk) => {
-        if (penduduk.Penduduk) {
-          createPendudukElement(penduduk.Penduduk, templateWarga);
-        } else {
-          createPendudukElement(penduduk, templateWarga);
-        }
+    });
+  }
+};
+
+const buttonDeleteFunction = async ({
+  buttonDelete, deleteData, templateWarga, getData, id_kepala_keluarga,
+}) => {
+  const { id } = buttonDelete;
+  await deleteData(id);
+
+  if (id_kepala_keluarga) {
+    const newPenduduk = await getData(id_kepala_keluarga);
+    const { Keluargas } = newPenduduk;
+    templateWarga.innerHTML = '';
+    makeKepalaKeluargainKeluarga({
+      keluargaById: newPenduduk, templateWarga, deleteData, getData,
+    });
+    Keluargas.forEach((keluarga) => {
+      createPendudukElement({
+        penduduk: keluarga.Penduduk, templateWarga, deleteData, getData, id_kepala_keluarga,
       });
-    }
-  });
+    });
+  } else {
+    const newPenduduk = await getData();
+    templateWarga.innerHTML = '';
+    newPenduduk.forEach((penduduk) => {
+      if (penduduk.id_kepala_keluarga) {
+        createKepalaKeluargaElement({
+          kepalaKeluarga: penduduk, templateWarga, deleteData, getData,
+        });
+      } else {
+        createPendudukElement({
+          penduduk, templateWarga, deleteData, getData,
+        });
+      }
+    });
+  }
 };
 
 const checkTokenLogin = async () => {
