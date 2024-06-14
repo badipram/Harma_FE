@@ -27,14 +27,15 @@ const tryLogin = async (login) => {
         text: 'Anda berhasil login!',
         confirmButtonText: 'OK',
       });
-      return responseJson;
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Login Gagal',
+        text: 'Username atau password salah.',
+        confirmButtonText: 'OK',
+      });
     }
-    Swal.fire({
-      icon: 'error',
-      title: 'Login Gagal',
-      text: 'Username atau password salah.',
-      confirmButtonText: 'OK',
-    });
+    return responseJson;
   } catch (error) {
     console.log(error);
     Swal.fire({
@@ -370,7 +371,7 @@ const tryAccessProtectedRoute = async (token) => {
     const responseJson = await response.json();
     return responseJson;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 

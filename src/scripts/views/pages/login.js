@@ -17,9 +17,12 @@ const Login = {
       const email = document.querySelector('#email').value;
       const password = document.querySelector('#password').value;
       const login = { email, password };
-      await tryLogin(login);
+      const resultLogin = await tryLogin(login);
       updateLoginStatus();
-      window.location.href = '#/beranda';
+
+      if (!resultLogin.error) {
+        window.location.href = '#/beranda';
+      }
     });
   },
 };

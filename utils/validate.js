@@ -13,7 +13,6 @@ const validate = async ({ decoded }, request, h) => {
     }
     return { isValid: true };
   } catch (error) {
-    console.error(error);
     return { isValid: false };
   }
 };
