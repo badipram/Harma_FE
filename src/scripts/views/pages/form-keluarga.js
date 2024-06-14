@@ -46,7 +46,6 @@ const FormKeluarga = {
       await addKeluarga({
         id_keluarga, id_kepala_keluarga, id_anggota_keluarga, hubungan,
       });
-
       const { id } = UrlParser.parseActiveUrlWithoutCombiner();
       window.location.href = `#/keluarga/${id}`;
     });

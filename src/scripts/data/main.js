@@ -5,24 +5,6 @@ import { updateLoginStatus } from '../utils/logout-helper';
 
 const BASE_URL = 'http://localhost:3000';
 
-// const tryLogin = async (login) => {
-//   try {
-//     const options = {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(login),
-//     };
-//     const response = await fetch(`${BASE_URL}/login`, options);
-//     const responseJson = await response.json();
-//     console.log(responseJson);
-//     return responseJson;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 const tryLogin = async (login) => {
   try {
     const options = {
@@ -117,24 +99,6 @@ const getKeluargaById = async (id) => {
   }
 };
 
-// const addPenduduk = async (penduduk) => {
-//   try {
-//     const options = {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(penduduk),
-//     };
-//     const response = await fetch(`${BASE_URL}/penduduk/tambah`, options);
-//     const responseJson = await response.json();
-//     console.log(responseJson);
-//     return responseJson;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 const addPenduduk = async (penduduk) => {
   try {
     const options = {
@@ -169,24 +133,6 @@ const addPenduduk = async (penduduk) => {
     });
   }
 };
-
-// const addKepalaKeluarga = async (id) => {
-//   try {
-//     const options = {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(id),
-//     };
-//     const response = await fetch(`${BASE_URL}/kepala-keluarga/tambah`, options);
-//     const responseJson = await response.json();
-//     console.log(responseJson);
-//     return responseJson;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 const addKepalaKeluarga = async (id) => {
   try {
@@ -229,24 +175,6 @@ const addKepalaKeluarga = async (id) => {
   }
 };
 
-// const addKeluarga = async (keluarga) => {
-//   try {
-//     const options = {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(keluarga),
-//     };
-//     const response = await fetch(`${BASE_URL}/keluarga/${keluarga.id_kepala_keluarga}/tambah`, options);
-//     const responseJson = await response.json();
-//     console.log(responseJson);
-//     return responseJson;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 const addKeluarga = async (keluarga) => {
   try {
     const options = {
@@ -287,24 +215,6 @@ const addKeluarga = async (keluarga) => {
     });
   }
 };
-
-// const editPendudukById = async (penduduk, id) => {
-//   try {
-//     const options = {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(penduduk),
-//     };
-//     const response = await fetch(`${BASE_URL}/penduduk/${id}/edit`, options);
-//     const responseJson = await response.json();
-//     console.log(responseJson);
-//     return responseJson;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 const editPendudukById = async (penduduk, id) => {
   try {
@@ -347,20 +257,6 @@ const editPendudukById = async (penduduk, id) => {
   }
 };
 
-// const deletePendudukById = async (id) => {
-//   const options = {
-//     method: 'DELETE',
-//   };
-//   try {
-//     const response = await fetch(`${BASE_URL}/penduduk/${id}`, options);
-//     const responseJson = await response.json();
-//     console.log(responseJson);
-//     return responseJson;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 const deletePendudukById = async (id) => {
   const options = {
     method: 'DELETE',
@@ -395,20 +291,6 @@ const deletePendudukById = async (id) => {
   }
 };
 
-// const deleteKepalaKeluargaById = async (id) => {
-//   const options = {
-//     method: 'DELETE',
-//   };
-//   try {
-//     const response = await fetch(`${BASE_URL}/kepala-keluarga/${id}`, options);
-//     const responseJson = await response.json();
-//     console.log(responseJson);
-//     return responseJson;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 const deleteKepalaKeluargaById = async (id) => {
   const options = {
     method: 'DELETE',
@@ -442,20 +324,6 @@ const deleteKepalaKeluargaById = async (id) => {
     console.log(error);
   }
 };
-
-// const deleteKeluargaById = async (id) => {
-//   const options = {
-//     method: 'DELETE',
-//   };
-//   try {
-//     const response = await fetch(`${BASE_URL}/keluarga/${id}`, options);
-//     const responseJson = await response.json();
-//     console.log(responseJson);
-//     return responseJson;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 const deleteKeluargaById = async (id) => {
   const options = {

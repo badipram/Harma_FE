@@ -1,32 +1,9 @@
-// import routes from '../routes/routes';
-// import Keluarga from '../views/pages/keluarga';
-// import UrlParser from '../routes/url-parser';
-// import FormKeluarga from '../views/pages/form-keluarga';
-// import FormEditPenduduk from '../views/pages/form-edit-penduduk';
-
-// function dynamicRoute(url) {
-//   const urlObj = UrlParser._urlSplitter(url);
-//   if (urlObj.resource === 'keluarga' && urlObj.id) {
-//     routes[url] = Keluarga;
-//   }
-
-//   if (urlObj.resource === 'keluarga' && urlObj.id && urlObj.verb) {
-//     routes[url] = FormKeluarga;
-//   }
-
-//   if (urlObj.resource === 'penduduk' && urlObj.id && urlObj.verb === 'edit') {
-//     routes[url] = FormEditPenduduk;
-//   }
-// }
-
-// export default dynamicRoute;
-
-// eslint-disable-next-line import/named
 import routes from '../routes/routes';
 import Keluarga from '../views/pages/keluarga';
 import UrlParser from '../routes/url-parser';
 import FormKeluarga from '../views/pages/form-keluarga';
 import FormEditPenduduk from '../views/pages/form-edit-penduduk';
+// eslint-disable-next-line import/named
 import { checkTokenLogin } from './function-helper';
 import FormDaftarPenduduk from '../views/pages/form-daftar-penduduk';
 import FormKepalaKeluarga from '../views/pages/form-kepkel';
@@ -77,4 +54,5 @@ async function addProtectedRoute() {
   }
 }
 
+// export default dynamicRoute;
 export { addRouteHaveId, addProtectedRoute };

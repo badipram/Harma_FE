@@ -848,4 +848,15 @@ footer .copyright-footer p {
   font-family: "Poppins", sans-serif;
 }
 
+.error-message {
+  font-size: 25px;
+  text-align: center;
+  padding: 125px;
+}
 
+.wrapper-daftar-penduduk .empty-message {
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  padding: 100px;
+}
