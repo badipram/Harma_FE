@@ -156,8 +156,13 @@ const buttonDeleteFunction = async ({
       keluargaById: newPenduduk, templateWarga, deleteData, getData,
     });
     Keluargas.forEach((keluarga) => {
+      const detailAnggotaKeluarga = keluarga.Penduduk;
+      Object.assign(detailAnggotaKeluarga, {
+        id_keluarga: keluarga.id_keluarga,
+        hubungan: keluarga.hubungan,
+      });
       createPendudukElement({
-        penduduk: keluarga.Penduduk, templateWarga, deleteData, getData, id_kepala_keluarga,
+        penduduk: detailAnggotaKeluarga, templateWarga, deleteData, getData, id_kepala_keluarga,
       });
     });
   } else {
