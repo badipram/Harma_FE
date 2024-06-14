@@ -35,8 +35,7 @@ const FormKeluarga = {
         </div>
     `;
     button.insertAdjacentHTML('beforebegin', elementHubungan);
-
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const nanoid = customAlphabet('0123456789', 9);
       const id_keluarga = nanoid();
@@ -44,9 +43,12 @@ const FormKeluarga = {
       const id_anggota_keluarga = document.querySelector('#penduduk').value;
       const hubungan = document.querySelector('#hubungan').value;
 
-      addKeluarga({
+      await addKeluarga({
         id_keluarga, id_kepala_keluarga, id_anggota_keluarga, hubungan,
       });
+
+      const { id } = UrlParser.parseActiveUrlWithoutCombiner();
+      window.location.href = `#/keluarga/${id}`;
     });
   },
 

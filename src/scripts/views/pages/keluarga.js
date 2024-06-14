@@ -65,12 +65,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-shadow */
-import Swal from 'sweetalert2';
 import createDaftarPendudukTemplate from '../templates/template-daftar-penduduk-helper';
 import { deleteKeluargaById, getKeluargaById } from '../../data/main';
 import UrlParser from '../../routes/url-parser';
 import {
-  buttonDeleteFunction, checkTokenLogin, createPendudukElement, makeKepalaKeluargainKeluarga,
+  createPendudukElement, makeKepalaKeluargainKeluarga,
 } from '../../utils/function-helper';
 
 const Keluarga = {
@@ -97,39 +96,23 @@ const Keluarga = {
 
     // Data Keluarga untuk Kepala Keluarga
     const templateWarga = document.querySelector('.wrapper-daftar-penduduk');
-    makeKepalaKeluargainKeluarga(keluargaById, templateWarga);
+    makeKepalaKeluargainKeluarga({
+      keluargaById, templateWarga, deleteData: deleteKeluargaById, getData: getKeluargaById,
+    });
 
     // Data Keluarga untuk Anggota Keluarga
     Keluargas.forEach(async (keluarga) => {
-      createPendudukElement(keluarga.Penduduk, templateWarga);
-
-      const descriptions = document.querySelectorAll('.description-penduduk');
-      descriptions.forEach((description, index) => {
-        if (index > 0) {
-          description.innerHTML += `
-            <span>Hubungan: ${keluarga.hubungan}</span>
-          `;
-        }
+      const detailAnggotaKeluarga = keluarga.Penduduk;
+      Object.assign(detailAnggotaKeluarga, {
+        id_keluarga: keluarga.id_keluarga,
+        hubungan: keluarga.hubungan,
       });
-
-      const buttonsDelete = document.querySelectorAll('.button-delete');
-      const { error } = await checkTokenLogin();
-      buttonsDelete.forEach((buttonDelete) => {
-        if (!error) {
-          buttonDelete.id = `${keluarga.id_keluarga}`;
-          buttonDeleteFunction({
-            buttonDelete, deleteData: deleteKeluargaById, templateWarga, getData: getKeluargaById, id_keluarga: id,
-          });
-        } else {
-          buttonDelete.addEventListener('click', () => {
-            Swal.fire({
-              icon: 'warning',
-              title: 'Login Dulu!',
-              text: 'Anda harus login terlebih dahulu untuk menghapus data.',
-              confirmButtonText: 'OK',
-            });
-          });
-        }
+      createPendudukElement({
+        penduduk: detailAnggotaKeluarga,
+        templateWarga,
+        deleteData: deleteKeluargaById,
+        getData: getKeluargaById,
+        id_kepala_keluarga: keluarga.id_kepala_keluarga,
       });
     });
   },

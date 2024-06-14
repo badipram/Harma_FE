@@ -37,11 +37,9 @@
 // };
 
 // export default Penduduk;
-
-import Swal from 'sweetalert2';
 import createDaftarPendudukTemplate from '../templates/template-daftar-penduduk-helper';
 import { deletePendudukById, getAllPenduduk } from '../../data/main';
-import { buttonDeleteFunction, checkTokenLogin, createPendudukElement } from '../../utils/function-helper';
+import { createPendudukElement } from '../../utils/function-helper';
 
 const Penduduk = {
   async render() {
@@ -65,26 +63,12 @@ const Penduduk = {
     }
 
     penduduks.forEach((penduduk) => {
-      createPendudukElement(penduduk, templateWarga);
-    });
-
-    const buttonsDelete = document.querySelectorAll('.button-delete');
-    const { error } = await checkTokenLogin();
-    buttonsDelete.forEach((buttonDelete) => {
-      if (!error) {
-        buttonDeleteFunction({
-          buttonDelete, deleteData: deletePendudukById, templateWarga, getData: getAllPenduduk,
-        });
-      } else {
-        buttonDelete.addEventListener('click', () => {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Login Dulu!',
-            text: 'Anda harus login terlebih dahulu untuk menghapus data.',
-            confirmButtonText: 'OK',
-          });
-        });
-      }
+      createPendudukElement({
+        penduduk,
+        templateWarga,
+        deleteData: deletePendudukById,
+        getData: getAllPenduduk,
+      });
     });
   },
 };

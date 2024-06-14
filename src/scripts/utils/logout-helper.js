@@ -37,6 +37,7 @@ const handleLogoutClick = (event) => {
     if (result.isConfirmed) {
       logout();
       localStorage.removeItem('token');
+      window.location.href = '#/login';
     }
   });
 };

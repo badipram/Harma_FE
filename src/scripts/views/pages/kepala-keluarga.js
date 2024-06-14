@@ -51,9 +51,8 @@
 // export default KepalaKeluarga;
 
 /* eslint-disable no-param-reassign */
-import Swal from 'sweetalert2';
 import { getKepalaKeluarga, deleteKepalaKeluargaById } from '../../data/main';
-import { createKepalaKeluargaElement, buttonDeleteFunction, checkTokenLogin } from '../../utils/function-helper';
+import { createKepalaKeluargaElement } from '../../utils/function-helper';
 import createDaftarPendudukTemplate from '../templates/template-daftar-penduduk-helper';
 
 const KepalaKeluarga = {
@@ -77,38 +76,13 @@ const KepalaKeluarga = {
       templateWarga.innerHTML = '<h1 style="color:white;">Data masih kosong</h1>';
     }
 
-    kepalaKeluargas.forEach((kepalaKeluarga, index) => {
-      createKepalaKeluargaElement(kepalaKeluarga, templateWarga);
-
-      const tagALinks = document.querySelectorAll('.wrapper-img a');
-      tagALinks[index].href = `/#/keluarga/${kepalaKeluarga.id_kepala_keluarga}`;
-
-      const buttonsDelete = document.querySelectorAll('.button-delete');
-      buttonsDelete[index].id = `${kepalaKeluarga.id_kepala_keluarga}`;
-    });
-
-    const buttonEdit = document.querySelectorAll('.button-edit');
-    buttonEdit.forEach((btnEdit) => {
-      btnEdit.remove();
-    });
-
-    const buttonsDelete = document.querySelectorAll('.button-delete');
-    const { error } = await checkTokenLogin();
-    buttonsDelete.forEach((buttonDelete) => {
-      if (!error) {
-        buttonDeleteFunction({
-          buttonDelete, deleteData: deleteKepalaKeluargaById, templateWarga, getData: getKepalaKeluarga,
-        });
-      } else {
-        buttonDelete.addEventListener('click', () => {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Login Dulu!',
-            text: 'Anda harus login terlebih dahulu untuk menghapus data.',
-            confirmButtonText: 'OK',
-          });
-        });
-      }
+    kepalaKeluargas.forEach((kepalaKeluarga) => {
+      createKepalaKeluargaElement({
+        kepalaKeluarga,
+        templateWarga,
+        deleteData: deleteKepalaKeluargaById,
+        getData: getKepalaKeluarga,
+      });
     });
   },
 };

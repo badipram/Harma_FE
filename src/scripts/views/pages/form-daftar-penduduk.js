@@ -25,7 +25,7 @@ const FormDaftarPenduduk = {
 
       try {
         await addPenduduk(penduduk);
-        console.log('Penduduk telah berhasil ditambahkan.');
+        window.location.href = '#/penduduk';
       } catch (error) {
         console.error('Error saat menambahkan penduduk:', error);
       }
