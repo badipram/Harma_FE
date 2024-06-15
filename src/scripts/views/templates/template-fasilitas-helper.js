@@ -5,7 +5,9 @@ const createFasilitasTemplate = () => `
   <div class="title" data-aos="fade-down">
     <h2>FASILITAS</h2>
     <div class="btn-fasilitas">
-      <button id="showALLFacility">Lihat Semua Fasilitas</button>
+      <a href="#/fasilitas">
+        <button id="showALLFacility">Lihat Semua Fasilitas</button>
+      </a>
     </div>
   </div>
   <div class="wrapper-fasilitas" data-aos="fade-up" data-aos-duration="1200">
@@ -31,5 +33,4 @@ const loadAllFasilitas = () => `
   `).join('')}
 `;
 
-// eslint-disable-next-line import/prefer-default-export
 export { createFasilitasTemplate, loadAllFasilitas };
