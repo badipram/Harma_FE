@@ -169,3 +169,27 @@
     justify-content: center;
   }
 }
+
+@media (min-width: 600px) {
+  .all-fasilitas .wrapper-fasilitas {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 100px 100px 100px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .all-fasilitas .wrapper-fasilitas {
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 200px 100px 200px;
+  }
+
+  .all-fasilitas .title {
+    margin-top: 40px;
+  }
+}
+
+@media (min-width: 320px) {
+  .wrapper-fasilitas {
+    margin-bottom: 50px;
+  }
+}

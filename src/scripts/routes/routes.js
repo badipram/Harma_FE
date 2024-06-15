@@ -7,6 +7,7 @@ import Login from '../views/pages/login';
 import FormKepalaKeluarga from '../views/pages/form-kepkel';
 import FormDaftarPenduduk from '../views/pages/form-daftar-penduduk';
 import FormKegiatan from '../views/pages/form-kegiatan';
+import AllFasilitas from '../views/pages/all-fasilitas';
 
 const routes = {
   '/': Beranda,
@@ -19,6 +20,7 @@ const routes = {
   '/kepala-keluarga/tambah': FormKepalaKeluarga,
   '/penduduk/tambah': FormDaftarPenduduk,
   '/kegiatan/tambah': FormKegiatan,
+  '/fasilitas': AllFasilitas,
 };
 
 export default routes;
