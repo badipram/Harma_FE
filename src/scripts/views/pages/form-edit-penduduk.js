@@ -10,7 +10,7 @@ const FormEditPenduduk = {
   },
 
   async afterRender() {
-    const { resource, id } = UrlParser.parseActiveUrlWithoutCombiner();
+    const { id } = UrlParser.parseActiveUrlWithoutCombiner();
     const pendudukById = await getPendudukById(id);
 
     const form = document.querySelector('.form');
@@ -42,12 +42,7 @@ const FormEditPenduduk = {
       };
 
       await editPendudukById(penduduk, id);
-      console.log(resource);
-      if (resource === 'penduduk') {
-        window.location.href = '#/penduduk';
-      } else {
-        window.location.href = `#/keluarga/${id}`;
-      }
+      window.location.href = '#/penduduk';
     });
   },
 };

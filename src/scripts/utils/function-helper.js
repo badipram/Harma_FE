@@ -8,7 +8,7 @@ import { tryAccessProtectedRoute } from '../data/main';
 
 const templateHtmlPenduduk = (penduduk, tanggalLahir) => `
     <div class="list-penduduk">
-      <div class="content-penduduk" data-aos="fade-up">
+      <div class="content-penduduk">
           <div class="wrapper-img">
             <a> 
               <i class="fa fa-user"></i>
