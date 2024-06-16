@@ -13,13 +13,20 @@ const Keluarga = {
   async afterRender() {
     const { id } = UrlParser.parseActiveUrlWithoutCombiner();
 
-    // Mendapatkan data Keluarga berdasarkan Id Kepala Keluarga
+    const loadingElement = document.querySelector('.loading');
+    const wrapperTitle = document.querySelector('.title');
+    const title = document.querySelector('.title h2');
+    const templateWarga = document.querySelector('.wrapper-daftar-penduduk');
+
+    loadingElement.style.display = 'block';
+
     const keluargaById = await getKeluargaById(id);
+
+    loadingElement.style.display = 'none';
+
     // Data anggota keluarga selain Kepala Keluarga
     const { Keluargas } = keluargaById;
 
-    const wrapperTitle = document.querySelector('.title');
-    const title = document.querySelector('.title h2');
     title.innerText = `Daftar Keluarga ${keluargaById.Penduduk.nama}`;
     wrapperTitle.innerHTML += `
       <div class="btn-penduduk">
@@ -28,7 +35,6 @@ const Keluarga = {
     `;
 
     // Data Keluarga untuk Kepala Keluarga
-    const templateWarga = document.querySelector('.wrapper-daftar-penduduk');
     makeKepalaKeluargainKeluarga({
       keluargaById, templateWarga, deleteData: deleteKeluargaById, getData: getKeluargaById,
     });
