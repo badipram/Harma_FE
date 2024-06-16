@@ -11,6 +11,7 @@ const Keluarga = {
   },
 
   async afterRender() {
+    const url = UrlParser.parseActiveUrlWithCombiner();
     const { id } = UrlParser.parseActiveUrlWithoutCombiner();
 
     const loadingElement = document.querySelector('.loading');
@@ -54,6 +55,8 @@ const Keluarga = {
         id_kepala_keluarga: keluarga.id_kepala_keluarga,
       });
     });
+
+    localStorage.setItem('route', url);
   },
 };
 

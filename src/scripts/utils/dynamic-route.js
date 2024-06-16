@@ -28,11 +28,15 @@ async function addRouteHaveId(url) {
   }
 
   if (urlObj.resource === 'penduduk' && urlObj.id && urlObj.verb === 'edit') {
+    const route = localStorage.getItem('route');
+    const previousUrl = `#${route}`;
     const { error } = await checkTokenLogin();
     if (error) {
       delete routes[url];
-      const prevUrlWithId = `#/${urlObj.resource}`;
-      return prevUrlWithId;
+      if (route === '/penduduk') {
+        return previousUrl;
+      }
+      return previousUrl;
     }
     routes[url] = FormEditPenduduk;
   }

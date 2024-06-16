@@ -1,6 +1,7 @@
 import createDaftarPendudukTemplate from '../templates/template-daftar-penduduk-helper';
 import { deletePendudukById, getAllPenduduk } from '../../data/main';
 import { createPendudukElement } from '../../utils/function-helper';
+import UrlParser from '../../routes/url-parser';
 
 const Penduduk = {
   async render() {
@@ -8,6 +9,7 @@ const Penduduk = {
   },
 
   async afterRender() {
+    const url = UrlParser.parseActiveUrlWithCombiner();
     const titlePenduduk = document.querySelector('.title h2');
     const title = document.querySelector('.title');
     const loadingElement = document.querySelector('.loading');
@@ -38,6 +40,8 @@ const Penduduk = {
         });
       });
     }
+
+    localStorage.setItem('route', url);
   },
 };
 

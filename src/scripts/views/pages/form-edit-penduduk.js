@@ -42,7 +42,13 @@ const FormEditPenduduk = {
       };
 
       await editPendudukById(penduduk, id);
-      window.location.href = '#/penduduk';
+
+      const prevRoute = localStorage.getItem('route');
+      if (prevRoute === '/penduduk') {
+        window.location.href = `#${prevRoute}`;
+      } else {
+        window.location.href = `#${prevRoute}`;
+      }
     });
   },
 };

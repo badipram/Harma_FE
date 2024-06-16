@@ -25,10 +25,10 @@ const Beranda = {
   },
   // eslint-disable-next-line no-empty-function
   async afterRender() {
-    const totalPenduduk = document.getElementById('totalPenduduk');
-    const totalKepalaKeluarga = document.getElementById('kepalaKeluarga');
-    const totalPerempuan = document.getElementById('perempuan');
-    const totalLaki = document.getElementById('lakiLaki');
+    const totalPenduduk = document.getElementById('TotalPenduduk');
+    const totalKepalaKeluarga = document.getElementById('KepalaKeluarga');
+    const totalPerempuan = document.getElementById('Perempuan');
+    const totalLaki = document.getElementById('Laki-Laki');
 
     const allPenduduk = await getAllPenduduk();
     const allKepalaKeluarga = await getKepalaKeluarga();
