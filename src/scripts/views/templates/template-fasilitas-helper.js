@@ -14,9 +14,9 @@ const createFasilitasTemplate = () => `
     <div class="list-fasilitas">
       ${fasilitas.slice(0, 3).map((fasilitas) => `
         <div class="content-fasilitas" data-aos="fade-up" data-aos-duration="1200">
-          <img src="${fasilitas.imgSrc}" alt="${fasilitas.imgAlt}">
+          <img src="${fasilitas.imgSrc}" alt="${fasilitas.imgAlt}" loading="lazy">
           <h2>${fasilitas.title}</h2>
-          <p>${fasilitas.description}</p>
+          <p>${fasilitas.detail}</p>
         </div>
       `).join('')}
     </div>
@@ -26,7 +26,7 @@ const createFasilitasTemplate = () => `
 const loadAllFasilitas = () => `
   ${fasilitas.map((fasilitas) => `
     <div class="content-fasilitas" data-aos="fade-up" data-aos-duration="1200">
-      <img src="${fasilitas.imgSrc}" alt="${fasilitas.imgAlt}">
+      <img src="${fasilitas.imgSrc}" alt="${fasilitas.imgAlt}" loading="lazy">
       <h2>${fasilitas.title}</h2>
       <p>${fasilitas.description}</p>
     </div>

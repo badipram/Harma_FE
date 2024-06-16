@@ -21,8 +21,8 @@ const templateHtmlPenduduk = (penduduk, tanggalLahir) => `
               <span>Jenis Kelamin: ${penduduk.jenis_kelamin}</span>
           </div>
           <div class="action">
-              <a href="/#/penduduk/${penduduk.id_penduduk}/edit" class="button-edit"><i class="fa fa-pencil"></i></a>
-              <a class="button-delete" id="${penduduk.id_penduduk}"><i class="fa fa-trash"></i></a>
+              <a href="/#/penduduk/${penduduk.id_penduduk}/edit" class="button-edit"><i class="fa-solid fa-pencil"></i></a>
+              <a class="button-delete" id="${penduduk.id_penduduk}"><i class="fa-solid fa-trash-can"></i></a>
           </div>
       </div>
     </div>

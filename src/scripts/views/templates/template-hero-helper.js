@@ -1,10 +1,10 @@
 const createHeroTemplate = () => `
 <div class="swiper-container">
   <div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="./images/img6.png" alt="Hero Image"></div>
-    <div class="swiper-slide"><img src="./images/img5.png" alt="Hero Image"></div>
-    <div class="swiper-slide"><img src="./images/img2.jpg" alt="Hero Image"></div>
-    <div class="swiper-slide"><img src="./images/img4.jpg" alt="Hero Image"></div>
+    <div class="swiper-slide"><img src="./images/img6.png" alt="Hero Image" loading="lazy"></div>
+    <div class="swiper-slide"><img src="./images/img5.png" alt="Hero Image" loading="lazy"></div>
+    <div class="swiper-slide"><img src="./images/img2.jpg" alt="Hero Image" loading="lazy"></div>
+    <div class="swiper-slide"><img src="./images/img4.jpg" alt="Hero Image" loading="lazy"></div>
     <!-- Add more slides as needed -->
   </div>
   <!-- Add Navigation -->
