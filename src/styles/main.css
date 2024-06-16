@@ -417,7 +417,13 @@ body {
 }
 
 .list-penduduk .content-penduduk .wrapper-img i{
-  font-size: 2px;
+  font-size: 23px;
+}
+
+.loading {
+  text-align: center; 
+  margin-top: 100px;
+  font-size: 30px;
 }
 
 .wrapper-daftar-penduduk .list-penduduk .content-penduduk .wrapper-img a {
