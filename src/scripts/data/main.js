@@ -3,7 +3,7 @@
 import Swal from 'sweetalert2';
 import { updateLoginStatus } from '../utils/logout-helper';
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://backend-harma-6f2e195012cd.herokuapp.com';
 
 const tryLogin = async (login) => {
   try {

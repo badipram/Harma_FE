@@ -1,7 +1,6 @@
 /* eslint-disable no-use-before-define */
-import Swal from 'sweetalert2';
 import createDaftarPendudukTemplate from '../templates/template-daftar-penduduk-helper';
-import { deletePendudukById, getAllPenduduk, tryAccessProtectedRoute } from '../../data/main';
+import { deletePendudukById, getAllPenduduk } from '../../data/main';
 import { createPendudukElement } from '../../utils/function-helper';
 
 const Penduduk = {
@@ -19,22 +18,6 @@ const Penduduk = {
       </div>
     `;
 
-    const btnTambahPenduduk = document.querySelector('#btn-tambah-penduduk');
-    btnTambahPenduduk.addEventListener('click', async (event) => {
-      event.preventDefault();
-      const { error } = await checkTokenLogin();
-      if (!error) {
-        window.location.href = '/#/penduduk/tambah';
-      } else {
-        Swal.fire({
-          icon: 'warning',
-          title: 'Login Dulu!',
-          text: 'Anda harus login terlebih dahulu untuk menambahkan penduduk.',
-          confirmButtonText: 'OK',
-        });
-      }
-    });
-
     const templateWarga = document.querySelector('.wrapper-daftar-penduduk');
     const penduduks = await getAllPenduduk();
     if (!penduduks.length > 0) {
@@ -50,12 +33,6 @@ const Penduduk = {
       });
     });
   },
-};
-
-const checkTokenLogin = async () => {
-  const token = localStorage.getItem('token');
-  const protectedRoute = await tryAccessProtectedRoute(token);
-  return protectedRoute;
 };
 
 export default Penduduk;

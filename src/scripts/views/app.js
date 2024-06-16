@@ -22,34 +22,27 @@ class App {
     });
   }
 
-  // async renderPage() {
-  //   const url = UrlParser.parseActiveUrlWithCombiner();
-  //   // dynamicRoute(url);
-  //   // await dynamicRoute(url);
-  //   await addRouteHaveId(url);
-  //   await addProtectedRoute();
-  //   const page = routes[url];
-  //   this._content.innerHTML = await page.render();
-  //   await page.afterRender();
-  // }
-
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
 
-    await addRouteHaveId(url);
-    await addProtectedRoute();
+    const prevUrlWithId = await addRouteHaveId(url);
+    const previousUrl = await addProtectedRoute(url);
 
     const page = routes[url];
-    if (!page) {
+    if (previousUrl || prevUrlWithId) {
       this._content.innerHTML = '<p class="error-message">Page not found 🥲</p>';
       Swal.fire({
-        title: 'Info',
-        text: 'Anda sudah login.',
-        icon: 'info',
+        title: 'Route Dibatasi',
+        text: 'Anda tidak memiliki akses ke route tersebut',
+        icon: 'warning',
         timer: 3000,
         timerProgressBar: true,
         willClose: () => {
-          window.location.href = '#/beranda';
+          if (previousUrl) {
+            window.location.href = `${previousUrl}`;
+          } else {
+            window.location.href = `${prevUrlWithId}`;
+          }
         },
       });
       return;

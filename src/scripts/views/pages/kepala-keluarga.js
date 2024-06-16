@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
-import Swal from 'sweetalert2';
 import { getKepalaKeluarga, deleteKepalaKeluargaById } from '../../data/main';
-import { createKepalaKeluargaElement, checkTokenLogin } from '../../utils/function-helper';
+import { createKepalaKeluargaElement } from '../../utils/function-helper';
 import createDaftarPendudukTemplate from '../templates/template-daftar-penduduk-helper';
 
 const KepalaKeluarga = {
@@ -16,7 +15,7 @@ const KepalaKeluarga = {
     titlePenduduk.innerText = 'Daftar Kepala Keluarga';
     title.innerHTML += `
       <div class="btn-penduduk">
-        <a href="#" id="tambah-kepala-keluarga">Tambah Kepala Keluarga</a>
+        <a href="/#/kepala-keluarga/tambah" id="tambah-kepala-keluarga">Tambah Kepala Keluarga</a>
       </div>
     `;
 
@@ -32,23 +31,6 @@ const KepalaKeluarga = {
         deleteData: deleteKepalaKeluargaById,
         getData: getKepalaKeluarga,
       });
-    });
-
-    // Tambahkan event listener untuk tombol "Tambah Kepala Keluarga"
-    const buttonTambahKepalaKeluarga = document.getElementById('tambah-kepala-keluarga');
-    buttonTambahKepalaKeluarga.addEventListener('click', async (event) => {
-      event.preventDefault();
-      const { error } = await checkTokenLogin();
-      if (error) {
-        Swal.fire({
-          icon: 'warning',
-          title: 'Login Dulu!',
-          text: 'Anda harus login terlebih dahulu untuk menambahkan data.',
-          confirmButtonText: 'OK',
-        });
-      } else {
-        window.location.href = '/#/kepala-keluarga/tambah';
-      }
     });
   },
 };

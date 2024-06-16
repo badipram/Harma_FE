@@ -1,9 +1,8 @@
-import Swal from 'sweetalert2';
 import createDaftarPendudukTemplate from '../templates/template-daftar-penduduk-helper';
 import { deleteKeluargaById, getKeluargaById } from '../../data/main';
 import UrlParser from '../../routes/url-parser';
 import {
-  createPendudukElement, makeKepalaKeluargainKeluarga, checkTokenLogin,
+  createPendudukElement, makeKepalaKeluargainKeluarga,
 } from '../../utils/function-helper';
 
 const Keluarga = {
@@ -24,7 +23,7 @@ const Keluarga = {
     title.innerText = `Daftar Keluarga ${keluargaById.Penduduk.nama}`;
     wrapperTitle.innerHTML += `
       <div class="btn-penduduk">
-        <a href="#" id="tambah-keluarga">Tambah Keluarga</a>
+        <a href="/#/keluarga/${id}/tambah" id="tambah-keluarga">Tambah Keluarga</a>
       </div>
     `;
 
@@ -48,22 +47,6 @@ const Keluarga = {
         getData: getKeluargaById,
         id_kepala_keluarga: keluarga.id_kepala_keluarga,
       });
-    });
-
-    const buttonTambahKeluarga = document.getElementById('tambah-keluarga');
-    buttonTambahKeluarga.addEventListener('click', async (event) => {
-      event.preventDefault();
-      const { error } = await checkTokenLogin();
-      if (error) {
-        Swal.fire({
-          icon: 'warning',
-          title: 'Login Dulu!',
-          text: 'Anda harus login terlebih dahulu untuk menambahkan data.',
-          confirmButtonText: 'OK',
-        });
-      } else {
-        window.location.href = `/#/keluarga/${id}/tambah`;
-      }
     });
   },
 };

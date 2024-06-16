@@ -42,13 +42,6 @@ const createPendudukElement = ({
     });
   });
 
-  const buttonsEdit = document.querySelectorAll('.button-edit');
-  buttonsEdit.forEach((buttonEdit) => {
-    eventButtonEdit({
-      buttonEdit, id_penduduk: penduduk.id_penduduk,
-    });
-  });
-
   if (id_kepala_keluarga) {
     const descriptions = document.querySelectorAll('.description-penduduk');
     descriptions.forEach((description, index) => {
@@ -103,43 +96,24 @@ const makeKepalaKeluargainKeluarga = ({
   deleteButton.remove();
 };
 
-const eventButtonDelete = async ({
+const eventButtonDelete = ({
   buttonDelete, deleteData, templateWarga, getData, id_kepala_keluarga,
 }) => {
-  const { error } = await checkTokenLogin();
-  if (!error) {
-    buttonDelete.addEventListener('click', () => {
+  buttonDelete.addEventListener('click', async () => {
+    const { error } = await checkTokenLogin();
+    if (!error) {
       buttonDeleteFunction({
         buttonDelete, deleteData, templateWarga, getData, id_kepala_keluarga,
       });
-    });
-  } else {
-    buttonDelete.addEventListener('click', () => {
+    } else {
       Swal.fire({
         icon: 'warning',
         title: 'Login Dulu!',
         text: 'Anda harus login terlebih dahulu untuk menghapus data.',
         confirmButtonText: 'OK',
       });
-    });
-  }
-};
-
-const eventButtonEdit = async ({
-  buttonEdit, id_penduduk,
-}) => {
-  const { error } = await checkTokenLogin();
-  if (error) {
-    buttonEdit.addEventListener('click', (event) => {
-      event.preventDefault();
-      Swal.fire({
-        icon: 'warning',
-        title: 'Login Dulu!',
-        text: 'Anda harus login terlebih dahulu untuk mengedit data.',
-        confirmButtonText: 'OK',
-      });
-    });
-  }
+    }
+  });
 };
 
 const buttonDeleteFunction = async ({
