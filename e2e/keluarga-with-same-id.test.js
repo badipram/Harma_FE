@@ -22,17 +22,24 @@ Scenario('adding keluarga with same id', async ({ I }) => {
 
   I.amOnPage('/#/kepala-keluarga');
 
-  I.see('Pram', '.wrapper-daftar-penduduk');
+  I.wait(1);
 
+  I.see('Pram', '.wrapper-daftar-penduduk');
   I.seeElement('.wrapper-img');
   const href = await I.grabAttributeFrom('.wrapper-img a', 'href');
 
   const id = href.split('/').pop();
 
+  I.wait(1);
+
   I.click('.wrapper-img');
+
+  I.wait(1);
 
   I.seeElement('.btn-penduduk');
   I.click('.btn-penduduk');
+
+  I.wait(1);
 
   I.selectOption('#penduduk', 'Lisa');
 
@@ -44,6 +51,8 @@ Scenario('adding keluarga with same id', async ({ I }) => {
   I.click('.swal2-confirm');
 
   I.amOnPage(`/#/keluarga/${id}`);
+
+  I.wait(1);
 
   I.seeElement('.btn-penduduk');
   I.click('.btn-penduduk');
@@ -65,6 +74,9 @@ Scenario('adding keluarga with same id', async ({ I }) => {
 
   I.waitForElement('.swal2-popup', 5);
   I.see('Apakah anda yakin ingin menghapus data kepala keluarga ini?', '.swal2-popup');
+  I.click('.swal2-confirm');
 
+  I.waitForElement('.swal2-popup', 5);
+  I.see('Terhapus!', '.swal2-popup');
   I.click('.swal2-confirm');
 });

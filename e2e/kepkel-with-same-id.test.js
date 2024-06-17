@@ -29,8 +29,6 @@ Scenario('adding kepala keluarga with same id', async ({ I }) => {
   I.seeElement('.btn-penduduk');
   I.click('#tambah-kepala-keluarga');
 
-  I.seeElement('#penduduk');
-
   I.selectOption('#penduduk', 'Pram');
 
   I.click('button[type=submit]');
@@ -48,8 +46,9 @@ Scenario('adding kepala keluarga with same id', async ({ I }) => {
 
   I.seeElement('#penduduk');
 
-  I.selectOption('#penduduk', 'Pram');
+  I.wait(1);
 
+  I.selectOption('#penduduk', 'Pram');
   I.click('button[type=submit]');
 
   I.waitForElement('.swal2-popup', 5);
@@ -59,11 +58,16 @@ Scenario('adding kepala keluarga with same id', async ({ I }) => {
 
   I.seeCurrentUrlEquals('/#/kepala-keluarga');
 
-  I.seeElement('.button-delete');
+  I.wait(1);
 
+  I.seeElement('.button-delete');
   I.click('.button-delete');
 
   I.waitForElement('.swal2-popup', 5);
   I.see('Apakah anda yakin ingin menghapus data kepala keluarga ini?', '.swal2-popup');
+  I.click('.swal2-confirm');
+
+  I.waitForElement('.swal2-popup', 5);
+  I.see('Terhapus!', '.swal2-popup');
   I.click('.swal2-confirm');
 });
