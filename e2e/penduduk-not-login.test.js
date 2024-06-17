@@ -32,11 +32,13 @@ Scenario('adding penduduk when not logged in', async ({ I }) => {
 
   I.seeCurrentUrlEquals('/#/penduduk');
 
+  I.wait(1);
+
   I.seeElement('.btn-penduduk');
   I.click('#btn-tambah-penduduk');
 
   I.waitForElement('.swal2-popup', 5);
-  I.see('Login Dulu!', '.swal2-popup');
+  I.see('Route Dibatasi', '.swal2-popup');
 
   I.click('.swal2-confirm');
 });
@@ -45,11 +47,13 @@ Scenario('adding penduduk when not logged in', async ({ I }) => {
 Scenario('editing penduduk when not logged in', async ({ I }) => {
   I.amOnPage('/#/penduduk');
 
+  I.wait(1);
+
   I.seeElement('.button-edit');
   I.click('.button-edit');
 
   I.waitForElement('.swal2-popup', 5);
-  I.see('Login Dulu!', '.swal2-popup');
+  I.see('Route Dibatasi', '.swal2-popup');
 
   I.click('.swal2-confirm');
 });
@@ -57,6 +61,8 @@ Scenario('editing penduduk when not logged in', async ({ I }) => {
 // menghapus penduduk bila belum login
 Scenario('deleting penduduk when not logged in', async ({ I }) => {
   I.amOnPage('/#/penduduk');
+
+  I.wait(1);
 
   I.seeElement('.button-delete');
   I.click('.button-delete');

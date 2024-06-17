@@ -55,20 +55,30 @@ Scenario('editing keluarga when already logged in', async ({ I }) => {
 
   I.see('Pram', '.wrapper-daftar-penduduk');
 
+  I.wait(1);
+
   I.seeElement('.wrapper-img');
   const href = await I.grabAttributeFrom('.wrapper-img a', 'href');
 
   const id = href.split('/').pop();
 
+  I.wait(1);
+
   I.click('.wrapper-img');
+
+  I.wait(1);
 
   I.seeElement('.button-edit');
   I.click('.button-edit');
+
+  I.wait(1);
 
   I.seeElement('#nama');
   I.seeElement('#alamat');
   I.seeElement('#tanggal_lahir');
   I.seeElement('#jenis_kelamin');
+
+  I.wait(1);
 
   I.fillField('#nama', 'Agus');
   I.fillField('#alamat', 'Bonang');
@@ -92,14 +102,19 @@ Scenario('deleting keluarga when already logged in', async ({ I }) => {
 
   I.amOnPage('/#/kepala-keluarga');
 
+  I.wait(1);
+
   I.seeElement('.wrapper-img');
   const href = await I.grabAttributeFrom('.wrapper-img a', 'href');
 
   const id = href.split('/').pop();
 
-  I.click('.wrapper-img');
+  I.wait(1);
 
+  I.click('.wrapper-img');
   I.see('Lisa', '.wrapper-daftar-penduduk');
+
+  I.wait(1);
 
   I.seeElement('.button-delete');
   I.click('.button-delete');
@@ -119,12 +134,17 @@ Scenario('deleting kepala keluarga already logged in', async ({ I }) => {
 
   I.amOnPage('/#/kepala-keluarga');
 
-  I.seeElement('.button-delete');
+  I.wait(1);
 
+  I.seeElement('.button-delete');
   I.click('.button-delete');
 
   I.waitForElement('.swal2-popup', 5);
   I.see('Apakah anda yakin ingin menghapus data kepala keluarga ini?', '.swal2-popup');
+  I.click('.swal2-confirm');
+
+  I.waitForElement('.swal2-popup', 5);
+  I.see('Terhapus!', '.swal2-popup');
   I.click('.swal2-confirm');
 
   I.dontSee('.content-penduduk');

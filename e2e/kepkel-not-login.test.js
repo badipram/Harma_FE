@@ -24,7 +24,7 @@ Scenario('adding kepala keluarga when not logged in', async ({ I }) => {
   I.click('#tambah-kepala-keluarga');
 
   I.waitForElement('.swal2-popup', 5);
-  I.see('Login Dulu!', '.swal2-popup');
+  I.see('Route Dibatasi', '.swal2-popup');
 
   I.click('.swal2-confirm');
 });
