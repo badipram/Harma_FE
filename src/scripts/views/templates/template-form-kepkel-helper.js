@@ -1,5 +1,5 @@
 const createFormGetPenduduk = () => `
-    <section class="form animate__animated animate__fadeInDown">
+    <section class="form">
         <div class="wrapper-form">
             <div class="title">
                 <h2>Tambah Kepala Keluarga</h2>
