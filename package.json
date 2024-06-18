@@ -6,7 +6,6 @@
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "server": "nodemon server.js",
     "serve": "http-server dist",
     "lint": "eslint ./src",
     "test": "jest",
@@ -46,16 +45,10 @@
     "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
-    "@hapi/hapi": "^21.3.9",
-    "@hapi/jwt": "^3.2.0",
     "animate.css": "^4.1.1",
-    "bcryptjs": "^2.4.3",
     "countup.js": "^2.8.0",
-    "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.10.0",
     "nanoid": "^5.0.7",
     "regenerator-runtime": "^0.14.0",
-    "sequelize": "^6.37.3",
     "sweetalert2": "^11.11.1",
     "swiper": "^11.1.4"
   }
