@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     strategy:
       matrix:
@@ -27,3 +28,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Start server
+        run: npm run server &
+        env:
+          NODE_ENV: test
+
+      - name: Wait for server to be ready
+        run: sleep 10
