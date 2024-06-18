@@ -326,6 +326,12 @@ body {
 .fasilitas .list-fasilitas .content-fasilitas h2,
 .galeri .list-galeri .content-galeri h2 {
   margin-block: 0.5rem;
+  font-size: 20px;
+}
+
+.fasilitas .list-fasilitas .content-fasilitas p,
+.galeri .list-galeri .content-galeri span {
+  font-size: 11px;
 }
 
 .fasilitas .list-fasilitas .content-fasilitas img,
@@ -814,7 +820,7 @@ footer .copyright-footer {
 footer .copyright-footer p {
   margin: 0;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* tambah fasilitas */

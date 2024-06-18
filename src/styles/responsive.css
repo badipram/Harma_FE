@@ -158,6 +158,16 @@
   .hero img {
     height: 600px;
   }
+
+  .fasilitas .list-fasilitas .content-fasilitas h2,
+  .galeri .list-galeri .content-galeri h2 {
+    font-size: 25px;
+  }
+  
+  .fasilitas .list-fasilitas .content-fasilitas p,
+  .galeri .list-galeri .content-galeri span {
+    font-size: 15px;
+  }
 }
 
 @media screen and (max-width: 650px) {
@@ -200,22 +210,6 @@
 
   footer .wrapper-footer .content-footer .info-footer, .link-cepat, footer .tentang-kami, footer .kontak-footer, footer .description-footer {
     font-size: 14px;
-  }
-
-  .content-fasilitas h2{
-    font-size: 20px;
-  }
-
-  .content-fasilitas p{
-    font-size: 11px;
-  }
-
-  .content-galeri h2 {  
-    font-size: 20px;
-  }
-
-  .content-galeri span {
-    font-size: 11px;
   }
 
   .kegiatan .title {
