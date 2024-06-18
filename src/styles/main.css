@@ -671,35 +671,64 @@ body {
   justify-content: space-around;
   flex-wrap: wrap;
   margin-bottom: 90px;
+  font-family: 'Arial', sans-serif; /* Mengatur font keluarga */
 }
 
 .team-member {
   background-color: #E9DDDD;
-  padding: 20px;
-  margin: 10px;
+  padding: 10px;
+  margin: 20px;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 12px;
   width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi untuk efek hover */
+}
+
+.team-member:hover {
+  transform: translateY(-10px); /* Efek mengangkat saat dihover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Bayangan lebih besar saat dihover */
 }
 
 .team-photo {
   width: 100%;
-  height: auto;
+  height: 200px; /* Menetapkan tinggi tetap */
   margin-bottom: 10px;
   border-bottom: #2A6478 2px solid;
+  object-fit: cover; /* Memastikan gambar tetap proporsional */
+  border-radius: 8px; /* Menambahkan border radius pada gambar */
+  transition: transform 0.3s ease; /* Transisi pada gambar untuk efek hover */
+}
+
+.team-photo:hover {
+  transform: scale(1.05); /* Sedikit memperbesar gambar saat dihover */
 }
 
 .team-info {
-  margin-top: 10px;
+  margin-top: 15px;
+  transition: color 0.3s ease; /* Transisi pada teks untuk efek hover */
 }
 
 .team-info h3 {
   margin: 10px 0 5px;
+  font-size: 1.2em; /* Mengatur ukuran font judul */
+  color: #2A6478; /* Warna teks judul */
 }
 
 .team-info p {
   margin: 5px 0;
+  color: #555; /* Warna teks deskripsi */
 }
+
+.team-info:hover h3 {
+  color: #1E4D5F; /* Mengubah warna teks judul saat dihover */
+}
+
+.team-info:hover p {
+  color: #333; /* Mengubah warna teks deskripsi saat dihover */
+}
+
+
+
 
 /* footer */
 footer {
