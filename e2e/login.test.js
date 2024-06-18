@@ -19,8 +19,12 @@ Scenario('Invalid Login', ({ I }) => {
 
   I.seeCurrentUrlEquals('/#/login');
 
+  I.wait(1);
+
   I.seeElement('#email');
   I.seeElement('#password');
+
+  I.wait(1);
 
   I.fillField('#email', 'mamanRacing@gmail.com');
   I.fillField('#password', 'racing');

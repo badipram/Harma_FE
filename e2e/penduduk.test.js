@@ -53,6 +53,8 @@ Scenario('editing penduduk when already logged in', async ({ I }) => {
 
   I.amOnPage('/#/penduduk');
 
+  I.wait(1);
+
   I.seeElement('.button-edit');
   I.click('.button-edit');
 
@@ -80,12 +82,17 @@ Scenario('deleting penduduk when already logged in', async ({ I }) => {
 
   I.amOnPage('/#/penduduk');
 
-  I.seeElement('.button-delete');
+  I.wait(1);
 
+  I.seeElement('.button-delete');
   I.click('.button-delete');
 
   I.waitForElement('.swal2-popup', 5);
   I.see('Apakah anda yakin ingin menghapus data penduduk ini?', '.swal2-popup');
+  I.click('.swal2-confirm');
+
+  I.waitForElement('.swal2-popup', 5);
+  I.see('Terhapus!', '.swal2-popup');
   I.click('.swal2-confirm');
 
   I.dontSee('.content-penduduk');
