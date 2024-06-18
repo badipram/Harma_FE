@@ -4,7 +4,7 @@ const teamMembers = [
     name: 'TB Muhammad Iqbal Zikri',
     university: 'Universitas Cendekia Abditama',
     role: 'Back-End Developer',
-    imgSrc: 'path/to/photo1.jpg',
+    imgSrc: './images/iqbal.jpeg',
     alt: 'TB Muhammad Iqbal Zikri',
   },
   {
