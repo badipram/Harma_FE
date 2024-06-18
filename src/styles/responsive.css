@@ -197,4 +197,28 @@
   .wrapper-fasilitas {
     margin-bottom: 50px;
   }
+
+  footer .wrapper-footer .content-footer .info-footer, .link-cepat, footer .tentang-kami, footer .kontak-footer, footer .description-footer {
+    font-size: 14px;
+  }
+
+  .content-fasilitas h2{
+    font-size: 20px;
+  }
+
+  .content-fasilitas p{
+    font-size: 11px;
+  }
+
+  .content-galeri h2 {  
+    font-size: 20px;
+  }
+
+  .content-galeri span {
+    font-size: 11px;
+  }
+
+  .kegiatan .title {
+    text-align: left;
+  }
 }
