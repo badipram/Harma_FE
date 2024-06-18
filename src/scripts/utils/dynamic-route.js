@@ -4,7 +4,6 @@ import Keluarga from '../views/pages/keluarga';
 import UrlParser from '../routes/url-parser';
 import FormKeluarga from '../views/pages/form-keluarga';
 import FormEditPenduduk from '../views/pages/form-edit-penduduk';
-// eslint-disable-next-line import/named
 import { checkTokenLogin } from './function-helper';
 import FormDaftarPenduduk from '../views/pages/form-daftar-penduduk';
 import FormKepalaKeluarga from '../views/pages/form-kepkel';
@@ -90,5 +89,4 @@ async function addProtectedRoute(url) {
   }
 }
 
-// export default dynamicRoute;
 export { addRouteHaveId, addProtectedRoute };

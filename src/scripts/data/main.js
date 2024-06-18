@@ -277,7 +277,6 @@ const deletePendudukById = async (id) => {
     if (result.isConfirmed) {
       const response = await fetch(`${BASE_URL}/penduduk/${id}`, options);
       const responseJson = await response.json();
-      console.log(responseJson);
 
       Swal.fire(
         'Terhapus!',
@@ -311,7 +310,6 @@ const deleteKepalaKeluargaById = async (id) => {
     if (result.isConfirmed) {
       const response = await fetch(`${BASE_URL}/kepala-keluarga/${id}`, options);
       const responseJson = await response.json();
-      console.log(responseJson);
 
       Swal.fire(
         'Terhapus!',
@@ -345,7 +343,6 @@ const deleteKeluargaById = async (id) => {
     if (result.isConfirmed) {
       const response = await fetch(`${BASE_URL}/keluarga/${id}`, options);
       const responseJson = await response.json();
-      console.log(responseJson);
 
       Swal.fire(
         'Terhapus!',

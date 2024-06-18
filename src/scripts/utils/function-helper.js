@@ -107,9 +107,11 @@ const eventButtonDelete = ({
       });
     } else {
       Swal.fire({
+        title: 'Route Dibatasi',
+        text: 'Anda tidak memiliki akses ke route tersebut',
         icon: 'warning',
-        title: 'Login Dulu!',
-        text: 'Anda harus login terlebih dahulu untuk menghapus data.',
+        timer: 3000,
+        timerProgressBar: true,
         confirmButtonText: 'OK',
       });
     }

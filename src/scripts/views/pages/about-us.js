@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-function */
 import { createAboutUsTemplate } from '../templates/template-about-us-helper';
 
 const AboutUs = {
@@ -7,7 +8,6 @@ const AboutUs = {
       <div class="content">${aboutUsHTML}</div>
         `;
   },
-  // eslint-disable-next-line no-empty-function
   async afterRender() {},
 };
 

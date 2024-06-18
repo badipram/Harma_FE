@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-function */
 import { loadAllFasilitas } from '../templates/template-fasilitas-helper';
 
 const AllFasilitas = {
@@ -14,9 +15,7 @@ const AllFasilitas = {
     `;
   },
 
-  async afterRender() {
-    // Tambahkan kode jika ada yang perlu dijalankan setelah render
-  },
+  async afterRender() {},
 };
 
 export default AllFasilitas;

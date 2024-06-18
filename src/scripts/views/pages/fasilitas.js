@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-function */
 import { createFasilitasTemplate } from '../templates/template-fasilitas-helper';
 
 const Fasilitas = {
@@ -8,11 +9,7 @@ const Fasilitas = {
     `;
   },
 
-  async afterRender() {
-    // const btnFasilitas = document.querySelector('.btn-fasilitas a');
-    // btnFasilitas.innerText = 'Tambah Fasilitas';
-    // btnFasilitas.href = '#/fasilitas/tambah';
-  },
+  async afterRender() {},
 };
 
 export default Fasilitas;

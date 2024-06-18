@@ -2,7 +2,6 @@ import Swal from 'sweetalert2';
 import DrawerInitiator from '../utils/drawer-initiator';
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
-// import dynamicRoute from '../utils/dynamic-route';
 import { addProtectedRoute, addRouteHaveId } from '../utils/dynamic-route';
 
 class App {
