@@ -164,6 +164,14 @@ const checkTokenLogin = async () => {
   return protectedRoute;
 };
 
+function formatTanggal(tanggal) {
+  const options = {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+  };
+  const locale = 'id-ID';
+  return new Intl.DateTimeFormat(locale, options).format(tanggal);
+}
+
 export {
-  createPendudukElement, createKepalaKeluargaElement, buttonDeleteFunction, templateHtmlPenduduk, makeKepalaKeluargainKeluarga, checkTokenLogin,
+  createPendudukElement, createKepalaKeluargaElement, buttonDeleteFunction, templateHtmlPenduduk, makeKepalaKeluargainKeluarga, checkTokenLogin, formatTanggal,
 };

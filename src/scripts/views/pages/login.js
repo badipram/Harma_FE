@@ -11,11 +11,11 @@ const Login = {
   },
   async afterRender() {
     const form = document.querySelector('form');
-
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const email = document.querySelector('#email').value;
       const password = document.querySelector('#password').value;
+
       const login = { email, password };
       const resultLogin = await tryLogin(login);
       updateLoginStatus();

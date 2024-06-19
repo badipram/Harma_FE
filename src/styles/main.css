@@ -387,6 +387,38 @@ body {
   padding: 0 1em 1em;
 }
 
+/* kegiatan */
+
+.wrapper-kegiatan .button-delete {
+  font-size: 25px;
+  background-color: #E9DDDD;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.wrapper-kegiatan .button-delete i {
+  margin-top: 20px;
+}
+
+.wrapper-kegiatan .button-delete:hover {
+  background-color: orangered;
+}
+
+.wrapper-kegiatan {
+  margin-bottom: 20px;
+}
+
+.content-kegiatan .title-kegiatan .waktu .tanggal {
+  width: 280px;
+}
+
+#deskripsi {
+  border-radius: 10px;
+  font-family: poppins;
+  padding: 10px;
+}
 
 /* Daftar Penduduk */
 .daftar-penduduk .title h2 {
@@ -919,3 +951,4 @@ footer .copyright-footer p {
   font-size: 25px;
   padding: 100px;
 }
+
