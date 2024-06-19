@@ -3,7 +3,7 @@
 import Swal from 'sweetalert2';
 import { updateLoginStatus } from '../utils/logout-helper';
 
-const BASE_URL = 'https://backend-harma-6f2e195012cd.herokuapp.com';
+const BASE_URL = 'https://project-capstone-harma-323fe14dde2b.herokuapp.com';
 
 const tryLogin = async (login) => {
   try {
@@ -93,6 +93,16 @@ const getKepalaKeluarga = async () => {
 const getKeluargaById = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}/keluarga/${id}`);
+    const responseJson = await response.json();
+    return responseJson;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getAllKegiatan = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/kegiatan`);
     const responseJson = await response.json();
     return responseJson;
   } catch (error) {
@@ -217,6 +227,23 @@ const addKeluarga = async (keluarga) => {
   }
 };
 
+const addKegiatan = async (kegiatan) => {
+  try {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(kegiatan),
+    };
+    const response = await fetch(`${BASE_URL}/kegiatan/tambah`, options);
+    const responseJson = await response.json();
+    return responseJson;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const editPendudukById = async (penduduk, id) => {
   try {
     const options = {
@@ -255,6 +282,23 @@ const editPendudukById = async (penduduk, id) => {
       icon: 'error',
       confirmButtonText: 'OK',
     });
+  }
+};
+
+const editKegiatanById = async (kegiatan, id) => {
+  try {
+    const options = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(kegiatan),
+    };
+    const response = await fetch(`${BASE_URL}/kegiatan/edit-kegiatan/${id}`, options);
+    const responseJson = await response.json();
+    return responseJson;
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -357,6 +401,37 @@ const deleteKeluargaById = async (id) => {
   }
 };
 
+const deleteKegiatanById = async (id) => {
+  try {
+    const options = {
+      method: 'DELETE',
+    };
+    const result = await Swal.fire({
+      title: 'Apakah anda yakin ingin menghapus data kegiatan ini?',
+      text: 'Anda tidak akan dapat mengembalikan ini!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, hapus saja!',
+      cancelButtonText: 'Batal',
+    });
+
+    if (result.isConfirmed) {
+      const response = await fetch(`${BASE_URL}/kegiatan/hapus-kegiatan/${id}`, options);
+      const responseJson = await response.json();
+      Swal.fire(
+        'Terhapus!',
+        'Data kegiatan telah berhasil dihapus.',
+        'success',
+      );
+      return responseJson;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const tryAccessProtectedRoute = async (token) => {
   const options = {
     headers: {
@@ -373,6 +448,6 @@ const tryAccessProtectedRoute = async (token) => {
 };
 
 export {
-  tryLogin, getAllPenduduk, getPendudukById, getKepalaKeluarga, getKeluargaById,
-  addPenduduk, addKepalaKeluarga, addKeluarga, deletePendudukById, deleteKepalaKeluargaById, deleteKeluargaById, editPendudukById, tryAccessProtectedRoute, logout,
+  tryLogin, getAllPenduduk, getPendudukById, getKepalaKeluarga, getKeluargaById, getAllKegiatan,
+  addPenduduk, addKepalaKeluarga, addKeluarga, addKegiatan, deletePendudukById, deleteKepalaKeluargaById, deleteKeluargaById, deleteKegiatanById, editPendudukById, editKegiatanById, tryAccessProtectedRoute, logout,
 };
