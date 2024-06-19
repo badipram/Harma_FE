@@ -303,6 +303,10 @@ body {
   border-radius: 5px;
 }
 
+.wrapper-daftar-penduduk .list-penduduk .content-penduduk {
+  margin-bottom: 5px;
+}
+
 .fasilitas .list-fasilitas,
 .galeri .list-galeri {
   display: grid;
@@ -322,6 +326,12 @@ body {
 .fasilitas .list-fasilitas .content-fasilitas h2,
 .galeri .list-galeri .content-galeri h2 {
   margin-block: 0.5rem;
+  font-size: 20px;
+}
+
+.fasilitas .list-fasilitas .content-fasilitas p,
+.galeri .list-galeri .content-galeri span {
+  font-size: 11px;
 }
 
 .fasilitas .list-fasilitas .content-fasilitas img,
@@ -422,7 +432,8 @@ body {
   width: 100%;
   align-items: center;
   row-gap: 1.5rem;
-  padding-block: 30px;
+  padding-top: 5px;
+  padding-bottom: 10px;
 }
 
 .list-penduduk .content-penduduk {
@@ -435,6 +446,7 @@ body {
   width: 100%;
   max-width: 280px;
   align-items: center;
+  margin-top: 10px;
 }
 
 .list-penduduk .content-penduduk .wrapper-img {
@@ -632,16 +644,6 @@ body {
   outline: none;
 }
 
-.remember-me-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.remember-me-container input {
-  margin-right: 10px;
-}
-
 .form-button {
   width: 100%;
 }
@@ -703,35 +705,62 @@ body {
   justify-content: space-around;
   flex-wrap: wrap;
   margin-bottom: 90px;
+  font-family: 'poppins'
 }
 
 .team-member {
   background-color: #E9DDDD;
-  padding: 20px;
-  margin: 10px;
+  padding: 10px;
+  margin: 20px;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 12px;
   width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .team-photo {
   width: 100%;
-  height: auto;
+  height: 200px;
   margin-bottom: 10px;
   border-bottom: #2A6478 2px solid;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.team-photo:hover {
+  transform: scale(1.05);
 }
 
 .team-info {
-  margin-top: 10px;
+  margin-top: 15px;
+  transition: color 0.3s ease;
 }
 
 .team-info h3 {
   margin: 10px 0 5px;
+  font-size: 1.2em;
+  color: #2A6478;
 }
 
 .team-info p {
   margin: 5px 0;
+  color: #555;
 }
+
+.team-info:hover h3 {
+  color: #1E4D5F;
+}
+
+.team-info:hover p {
+  color: #333;
+}
+
 
 /* footer */
 footer {
@@ -823,7 +852,7 @@ footer .copyright-footer {
 footer .copyright-footer p {
   margin: 0;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* tambah fasilitas */
