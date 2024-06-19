@@ -26,8 +26,12 @@ const FormKegiatan = {
         lokasi,
       };
 
-      const addingKegiatan = await addKegiatan(kegiatan);
-      console.log(addingKegiatan);
+      try {
+        await addKegiatan(kegiatan);
+        window.location.href = '#/kegiatan'; // Arahkan ke halaman kegiatan setelah berhasil menambahkan kegiatan
+      } catch (error) {
+        console.error('Error saat menambahkan kegiatan:', error);
+      }
     });
   },
 };

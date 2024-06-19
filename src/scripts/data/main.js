@@ -238,9 +238,33 @@ const addKegiatan = async (kegiatan) => {
     };
     const response = await fetch(`${BASE_URL}/kegiatan/tambah`, options);
     const responseJson = await response.json();
+
+    if (response.ok) {
+      Swal.fire({
+        title: 'Berhasil!',
+        text: 'Kegiatan berhasil ditambahkan.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+    } else {
+      Swal.fire({
+        title: 'Gagal!',
+        text: responseJson.message || 'Terjadi masalah saat menambahkan kegiatan. Silakan coba lagi.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+    }
+
     return responseJson;
   } catch (error) {
     console.log(error);
+
+    Swal.fire({
+      title: 'Gagal!',
+      text: 'Terjadi masalah saat menambahkan kegiatan. Silakan coba lagi.',
+      icon: 'error',
+      confirmButtonText: 'OK',
+    });
   }
 };
 
